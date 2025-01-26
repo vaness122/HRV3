@@ -32,13 +32,13 @@
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             button3 = new Button();
-            button2 = new Button();
+            List_UsersBtn = new Button();
             button1 = new Button();
             panel2 = new Panel();
             label1 = new Label();
             EditUser_Btn = new Button();
-            Password_Edit = new TextBox();
-            Username_Edit = new TextBox();
+            updatePassword_Btn = new TextBox();
+            updateUsernameTextBox = new TextBox();
             label3 = new Label();
             label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -72,14 +72,14 @@
             button3.Text = "Logout";
             button3.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // List_UsersBtn
             // 
-            button2.Location = new Point(37, 225);
-            button2.Name = "button2";
-            button2.Size = new Size(100, 23);
-            button2.TabIndex = 11;
-            button2.Text = "List of User";
-            button2.UseVisualStyleBackColor = true;
+            List_UsersBtn.Location = new Point(37, 225);
+            List_UsersBtn.Name = "List_UsersBtn";
+            List_UsersBtn.Size = new Size(100, 23);
+            List_UsersBtn.TabIndex = 11;
+            List_UsersBtn.Text = "List of User";
+            List_UsersBtn.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -119,24 +119,26 @@
             EditUser_Btn.Name = "EditUser_Btn";
             EditUser_Btn.Size = new Size(75, 23);
             EditUser_Btn.TabIndex = 18;
-            EditUser_Btn.Text = "Login";
+            EditUser_Btn.Text = "Edit";
             EditUser_Btn.UseVisualStyleBackColor = false;
+            EditUser_Btn.Click += EditUser_Btn_Click;
             // 
-            // Password_Edit
+            // updatePassword_Btn
             // 
-            Password_Edit.Font = new Font("Segoe UI", 10F);
-            Password_Edit.Location = new Point(282, 231);
-            Password_Edit.Name = "Password_Edit";
-            Password_Edit.Size = new Size(212, 25);
-            Password_Edit.TabIndex = 17;
+            updatePassword_Btn.Font = new Font("Segoe UI", 10F);
+            updatePassword_Btn.Location = new Point(282, 231);
+            updatePassword_Btn.Name = "updatePassword_Btn";
+            updatePassword_Btn.Size = new Size(212, 25);
+            updatePassword_Btn.TabIndex = 17;
             // 
-            // Username_Edit
+            // updateUsernameTextBox
             // 
-            Username_Edit.Font = new Font("Segoe UI", 10F);
-            Username_Edit.Location = new Point(282, 172);
-            Username_Edit.Name = "Username_Edit";
-            Username_Edit.Size = new Size(212, 25);
-            Username_Edit.TabIndex = 16;
+            updateUsernameTextBox.Font = new Font("Segoe UI", 10F);
+            updateUsernameTextBox.ImeMode = ImeMode.NoControl;
+            updateUsernameTextBox.Location = new Point(282, 172);
+            updateUsernameTextBox.Name = "updateUsernameTextBox";
+            updateUsernameTextBox.Size = new Size(212, 25);
+            updateUsernameTextBox.TabIndex = 16;
             // 
             // label3
             // 
@@ -163,15 +165,15 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(595, 433);
+            ClientSize = new Size(538, 433);
             Controls.Add(EditUser_Btn);
-            Controls.Add(Password_Edit);
-            Controls.Add(Username_Edit);
+            Controls.Add(updatePassword_Btn);
+            Controls.Add(updateUsernameTextBox);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(panel1);
             Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(List_UsersBtn);
             Controls.Add(button1);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
@@ -189,13 +191,13 @@
         private Panel panel1;
         private PictureBox pictureBox1;
         private Button button3;
-        private Button button2;
+        private Button List_UsersBtn;
         private Button button1;
         private Panel panel2;
         private Label label1;
         private Button EditUser_Btn;
-        private TextBox Password_Edit;
-        private TextBox Username_Edit;
+        private TextBox updatePassword_Btn;
+        private TextBox updateUsernameTextBox;
         private Label label3;
         private Label label2;
     }

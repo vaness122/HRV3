@@ -1,70 +1,109 @@
 ﻿using HR.DAL.Models;
-using Microsoft.Data.SqlClient;
+using HR.DAL.Data;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace HR.DAL.Repository
 {
     public class UserRepo : IUserRepo
     {
+        private readonly AppDbContext _context;
 
-
-        private readonly string connectionString =
-         "Server=DESKTOP-AOJDK8M;Database=HRDB;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True";
-
-        public void AddUser(string username, string password)
+        public UserRepo(AppDbContext context)
         {
+            _context = context;
+        }
 
-
-            string query = "INSERT INTO HRIUsers (Username,Password) VALUES(@Username,@Password)";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+        public async Task AddUser(string username, string password)
+        {
+            try
             {
-                connection.Open();
-                using (SqlCommand cmd = new SqlCommand(query, connection))
+                var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+                if (existingUser != null)
                 {
-                    cmd.Parameters.AddWithValue("@Username", Username);
-                    cmd.Parameters.AddWithValue("@Password", Password);
-                    cmd.ExecuteNonQuery();
+                    throw new Exception("Username already exists.");
                 }
 
+                var user = new User { Username = username, Password = password };
+                _context.Add(user);
+                await _context.SaveChangesAsync();
             }
-
-
-
+            catch (Exception ex)
+            {
+                throw new Exception("Error while adding user: " + ex.Message);
+            }
         }
 
         public bool AuthenticUser(string username, string password)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var user = _context.Users.FirstOrDefault(u => u.Username == username && u.Password == password);
+                return user != null;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error authenticating user: " + ex.Message);
+            }
         }
 
-        public void DeleteUser(string username)
+        public async Task DeleteUser(string username)
+        {
+            try
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+                if (user != null)
+                {
+                    _context.Users.Remove(user);
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error while deleting user: " + ex.Message);
+            }
+        }
+
+        public List<User> GetAllUser()
         {
             throw new NotImplementedException();
         }
 
-        public List<UserRepo> GetAllUser()
+        public async Task UpdateUser(string oldUsername, string newUsername)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == oldUsername);
+                if (user != null)
+                {
+                    user.Username = newUsername;
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error while updating username: " + ex.Message);
+            }
         }
 
-        public void UpdateUser(string oldUsername, string newUsername)
+        public async Task UpdateUserPassword(string username, string newPassword)
         {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateUserPassword(string username, string newPassword)
-        {
-            throw new NotImplementedException();
-        }
-
-        List<User> IUserRepo.GetAllUser()
-        {
-            throw new NotImplementedException();
+            try
+            {
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+                if (user != null)
+                {
+                    user.Password = newPassword;
+                    await _context.SaveChangesAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error while updating password: " + ex.Message);
+            }
         }
     }
 }

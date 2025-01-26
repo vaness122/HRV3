@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserDashboard));
             panel1 = new Panel();
-            label1 = new Label();
+            Name = new Label();
             Profile_Btn = new Button();
             button2 = new Button();
             button3 = new Button();
@@ -39,6 +39,7 @@
             dataGridView1 = new DataGridView();
             Users_Edit = new Button();
             Users_Delete = new Button();
+            updateUsernameTextBox = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -52,15 +53,15 @@
             panel1.Size = new Size(609, 30);
             panel1.TabIndex = 2;
             // 
-            // label1
+            // Name
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(69, 150);
-            label1.Name = "label1";
-            label1.Size = new Size(61, 14);
-            label1.TabIndex = 3;
-            label1.Text = "Username";
+            Name.AutoSize = true;
+            Name.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Name.Location = new Point(69, 150);
+            Name.Name = "Name";
+            Name.Size = new Size(61, 14);
+            Name.TabIndex = 3;
+            Name.Text = "Username";
             // 
             // Profile_Btn
             // 
@@ -70,6 +71,7 @@
             Profile_Btn.TabIndex = 4;
             Profile_Btn.Text = "Profile";
             Profile_Btn.UseVisualStyleBackColor = true;
+            Profile_Btn.Click += Profile_Btn_Click;
             // 
             // button2
             // 
@@ -103,7 +105,7 @@
             // 
             panel2.BackColor = Color.Cornsilk;
             panel2.Controls.Add(pictureBox1);
-            panel2.Controls.Add(label1);
+            panel2.Controls.Add(Name);
             panel2.Location = new Point(-1, 28);
             panel2.Name = "panel2";
             panel2.Size = new Size(200, 407);
@@ -125,6 +127,7 @@
             Users_Edit.TabIndex = 10;
             Users_Edit.Text = "Edit";
             Users_Edit.UseVisualStyleBackColor = true;
+            Users_Edit.Click += Users_Edit_Click;
             // 
             // Users_Delete
             // 
@@ -134,13 +137,22 @@
             Users_Delete.TabIndex = 11;
             Users_Delete.Text = "Delete";
             Users_Delete.UseVisualStyleBackColor = true;
+            Users_Delete.Click += Users_Delete_Click;
+            // 
+            // updateUsernameTextBox
+            // 
+            updateUsernameTextBox.Location = new Point(240, 347);
+            updateUsernameTextBox.Name = "updateUsernameTextBox";
+            updateUsernameTextBox.Size = new Size(140, 23);
+            updateUsernameTextBox.TabIndex = 12;
             // 
             // UserDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(595, 433);
+            ClientSize = new Size(572, 433);
+            Controls.Add(updateUsernameTextBox);
             Controls.Add(Users_Delete);
             Controls.Add(Users_Edit);
             Controls.Add(dataGridView1);
@@ -150,19 +162,19 @@
             Controls.Add(panel1);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "UserDashboard";
-            Text = "UserDashboard";
+           
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Panel panel1;
-        private Label label1;
+        private Label Name;
         private Button Profile_Btn;
         private Button button2;
         private Button button3;
@@ -171,5 +183,6 @@
         private DataGridView dataGridView1;
         private Button Users_Edit;
         private Button Users_Delete;
+        private TextBox updateUsernameTextBox;
     }
 }

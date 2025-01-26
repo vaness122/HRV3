@@ -31,14 +31,14 @@
             label1 = new Label();
             panel1 = new Panel();
             panel2 = new Panel();
+            Register_ToLoginBtn = new Button();
+            label4 = new Label();
+            pictureBox1 = new PictureBox();
+            Register_Btn = new Button();
             label2 = new Label();
             label3 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            button1 = new Button();
-            pictureBox1 = new PictureBox();
-            label4 = new Label();
-            button2 = new Button();
+            Username_Register = new TextBox();
+            Password_Register = new TextBox();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -54,6 +54,7 @@
             label1.Size = new Size(30, 32);
             label1.TabIndex = 0;
             label1.Text = "X";
+            label1.Click += label1_Click;
             // 
             // panel1
             // 
@@ -67,13 +68,59 @@
             // panel2
             // 
             panel2.BackColor = Color.Honeydew;
-            panel2.Controls.Add(button2);
+            panel2.Controls.Add(Register_ToLoginBtn);
             panel2.Controls.Add(label4);
             panel2.Controls.Add(pictureBox1);
             panel2.Location = new Point(-10, 34);
             panel2.Name = "panel2";
             panel2.Size = new Size(311, 401);
             panel2.TabIndex = 1;
+            // 
+            // Register_ToLoginBtn
+            // 
+            Register_ToLoginBtn.BackColor = SystemColors.ButtonFace;
+            Register_ToLoginBtn.FlatStyle = FlatStyle.Popup;
+            Register_ToLoginBtn.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Register_ToLoginBtn.Location = new Point(131, 241);
+            Register_ToLoginBtn.Name = "Register_ToLoginBtn";
+            Register_ToLoginBtn.Size = new Size(75, 23);
+            Register_ToLoginBtn.TabIndex = 6;
+            Register_ToLoginBtn.Text = "Login";
+            Register_ToLoginBtn.UseVisualStyleBackColor = false;
+            Register_ToLoginBtn.Click += Register_ToLoginBtn_Click;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label4.Location = new Point(131, 215);
+            label4.Name = "label4";
+            label4.Size = new Size(66, 14);
+            label4.TabIndex = 8;
+            label4.Text = "New User?";
+            // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = Properties.Resources.ri;
+            pictureBox1.Location = new Point(122, 110);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(100, 97);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 7;
+            pictureBox1.TabStop = false;
+            // 
+            // Register_Btn
+            // 
+            Register_Btn.BackColor = Color.Honeydew;
+            Register_Btn.FlatStyle = FlatStyle.Popup;
+            Register_Btn.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Register_Btn.Location = new Point(480, 275);
+            Register_Btn.Name = "Register_Btn";
+            Register_Btn.Size = new Size(75, 23);
+            Register_Btn.TabIndex = 7;
+            Register_Btn.Text = "Register";
+            Register_Btn.UseVisualStyleBackColor = false;
+            this.Register_Btn.Click += new System.EventHandler(this.Register_Btn_Click);
             // 
             // label2
             // 
@@ -95,65 +142,21 @@
             label3.TabIndex = 3;
             label3.Text = "Password :";
             // 
-            // textBox1
+            // Username_Register
             // 
-            textBox1.Font = new Font("Segoe UI", 10F);
-            textBox1.Location = new Point(343, 185);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(212, 25);
-            textBox1.TabIndex = 4;
+            Username_Register.Font = new Font("Segoe UI", 10F);
+            Username_Register.Location = new Point(343, 185);
+            Username_Register.Name = "Username_Register";
+            Username_Register.Size = new Size(212, 25);
+            Username_Register.TabIndex = 4;
             // 
-            // textBox2
+            // Password_Register
             // 
-            textBox2.Font = new Font("Segoe UI", 10F);
-            textBox2.Location = new Point(343, 244);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(212, 25);
-            textBox2.TabIndex = 5;
-            // 
-            // button1
-            // 
-            button1.BackColor = Color.Honeydew;
-            button1.FlatStyle = FlatStyle.Popup;
-            button1.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(480, 275);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 6;
-            button1.Text = "Login";
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = Properties.Resources.ri;
-            pictureBox1.Location = new Point(122, 110);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(100, 97);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 7;
-            pictureBox1.TabStop = false;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label4.Location = new Point(131, 215);
-            label4.Name = "label4";
-            label4.Size = new Size(66, 14);
-            label4.TabIndex = 8;
-            label4.Text = "New User?";
-            // 
-            // button2
-            // 
-            button2.BackColor = SystemColors.ButtonFace;
-            button2.FlatStyle = FlatStyle.Popup;
-            button2.Font = new Font("Tahoma", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(122, 241);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 7;
-            button2.Text = "Register";
-            button2.UseVisualStyleBackColor = false;
+            Password_Register.Font = new Font("Segoe UI", 10F);
+            Password_Register.Location = new Point(343, 244);
+            Password_Register.Name = "Password_Register";
+            Password_Register.Size = new Size(212, 25);
+            Password_Register.TabIndex = 5;
             // 
             // Register
             // 
@@ -161,9 +164,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
             ClientSize = new Size(595, 433);
-            Controls.Add(button1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(Password_Register);
+            Controls.Add(Register_Btn);
+            Controls.Add(Username_Register);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(panel2);
@@ -187,10 +190,10 @@
         private Panel panel2;
         private Label label2;
         private Label label3;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Button button1;
-        private Button button2;
+        private TextBox Username_Register;
+        private TextBox Password_Register;
+        private Button Register_ToLoginBtn;
+        private Button Register_Btn;
         private Label label4;
         private PictureBox pictureBox1;
     }
