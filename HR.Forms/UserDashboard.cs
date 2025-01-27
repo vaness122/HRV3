@@ -91,8 +91,8 @@ namespace HR.Forms
         private void Profile_Btn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            UserDashboard userDashboard = new UserDashboard(_userRepository ,_loggedInUsername);
-            userDashboard.Show();
+            UserProfile prof = new UserProfile(_userRepository ,_loggedInUsername);
+            prof.Show();
         }
     }
 }
