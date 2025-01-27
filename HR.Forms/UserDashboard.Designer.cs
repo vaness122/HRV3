@@ -30,16 +30,18 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserDashboard));
             panel1 = new Panel();
+            lblclose = new Label();
             Name = new Label();
             Profile_Btn = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            lbl_listofuser = new Button();
+            btn_logout = new Button();
             pictureBox1 = new PictureBox();
             panel2 = new Panel();
             dataGridView1 = new DataGridView();
             Users_Edit = new Button();
             Users_Delete = new Button();
             updateUsernameTextBox = new TextBox();
+            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
@@ -48,10 +50,22 @@
             // panel1
             // 
             panel1.BackColor = Color.DarkSeaGreen;
+            panel1.Controls.Add(lblclose);
             panel1.Location = new Point(-1, -1);
             panel1.Name = "panel1";
             panel1.Size = new Size(609, 30);
             panel1.TabIndex = 2;
+            // 
+            // lblclose
+            // 
+            lblclose.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblclose.ForeColor = SystemColors.ButtonFace;
+            lblclose.Location = new Point(544, 0);
+            lblclose.Name = "lblclose";
+            lblclose.Size = new Size(29, 29);
+            lblclose.TabIndex = 20;
+            lblclose.Text = "X";
+            lblclose.Click += label1_Click;
             // 
             // Name
             // 
@@ -62,6 +76,8 @@
             Name.Size = new Size(61, 14);
             Name.TabIndex = 3;
             Name.Text = "Username";
+            Name.Click += Name_Click;
+
             // 
             // Profile_Btn
             // 
@@ -73,23 +89,25 @@
             Profile_Btn.UseVisualStyleBackColor = true;
             Profile_Btn.Click += Profile_Btn_Click;
             // 
-            // button2
+            // lbl_listofuser
             // 
-            button2.Location = new Point(43, 226);
-            button2.Name = "button2";
-            button2.Size = new Size(100, 23);
-            button2.TabIndex = 5;
-            button2.Text = "List of User";
-            button2.UseVisualStyleBackColor = true;
+            lbl_listofuser.Location = new Point(43, 226);
+            lbl_listofuser.Name = "lbl_listofuser";
+            lbl_listofuser.Size = new Size(100, 23);
+            lbl_listofuser.TabIndex = 5;
+            lbl_listofuser.Text = "List of User";
+            lbl_listofuser.UseVisualStyleBackColor = true;
+            lbl_listofuser.Click += lbl_listofuser_Click;
             // 
-            // button3
+            // btn_logout
             // 
-            button3.Location = new Point(43, 246);
-            button3.Name = "button3";
-            button3.Size = new Size(100, 23);
-            button3.TabIndex = 6;
-            button3.Text = "Logout";
-            button3.UseVisualStyleBackColor = true;
+            btn_logout.Location = new Point(43, 246);
+            btn_logout.Name = "btn_logout";
+            btn_logout.Size = new Size(100, 23);
+            btn_logout.TabIndex = 6;
+            btn_logout.Text = "Logout";
+            btn_logout.UseVisualStyleBackColor = true;
+            btn_logout.Click += btn_logout_Click;
             // 
             // pictureBox1
             // 
@@ -118,6 +136,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(302, 259);
             dataGridView1.TabIndex = 9;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Users_Edit
             // 
@@ -156,33 +175,38 @@
             Controls.Add(Users_Delete);
             Controls.Add(Users_Edit);
             Controls.Add(dataGridView1);
-            Controls.Add(button3);
-            Controls.Add(button2);
+            Controls.Add(btn_logout);
+            Controls.Add(lbl_listofuser);
             Controls.Add(Profile_Btn);
             Controls.Add(panel1);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
-           
+            StartPosition = FormStartPosition.CenterScreen;
+            panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
+
+
         }
+
 
         #endregion
 
         private Panel panel1;
         private Label Name;
         private Button Profile_Btn;
-        private Button button2;
-        private Button button3;
+        private Button lbl_listofuser;
+        private Button btn_logout;
         private PictureBox pictureBox1;
         private Panel panel2;
         private DataGridView dataGridView1;
         private Button Users_Edit;
         private Button Users_Delete;
         private TextBox updateUsernameTextBox;
+        private Label lblclose;
     }
 }

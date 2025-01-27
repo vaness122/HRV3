@@ -12,6 +12,7 @@ namespace HR.DAL.Repository
         Task UpdateUserPassword(string username, string newPassword);
         Task DeleteUser(string username);
         bool AuthenticUser(string username, string password);
-        List<User> GetAllUser();
+
+        Task<List<User>> GetAllUserAsyncs();
     }
 }

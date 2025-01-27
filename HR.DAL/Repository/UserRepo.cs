@@ -16,6 +16,12 @@ namespace HR.DAL.Repository
         {
             _context = context;
         }
+        public async Task<List<User>> GetAllUserAsyncs()
+        {
+            return await _context.Users.ToListAsync();  
+        }
+
+  
 
         public async Task AddUser(string username, string password)
         {
@@ -104,6 +110,11 @@ namespace HR.DAL.Repository
             {
                 throw new Exception("Error while updating password: " + ex.Message);
             }
+        }
+
+        public Task GetAllUserAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

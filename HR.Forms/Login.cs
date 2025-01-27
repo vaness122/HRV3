@@ -52,6 +52,26 @@ namespace HR.Forms
 
         }
 
-       
+        private void label1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Login_To_RegisterBtn_Click(object sender, EventArgs e)
+        {
+            {
+
+                Register register = new Register(_userRepository);
+                register.Show();
+
+                // Optionally, hide the current Login form (if you don't want it to remain open)
+                this.Hide();
+            }
+        }
+
+        private void Password_Login_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
