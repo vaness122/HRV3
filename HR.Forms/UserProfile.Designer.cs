@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserProfile));
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
-            button3 = new Button();
+            logout_btn = new Button();
             List_UsersBtn = new Button();
             button1 = new Button();
             panel2 = new Panel();
@@ -63,14 +63,15 @@
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
             // 
-            // button3
+            // logout_btn
             // 
-            button3.Location = new Point(37, 245);
-            button3.Name = "button3";
-            button3.Size = new Size(100, 23);
-            button3.TabIndex = 12;
-            button3.Text = "Logout";
-            button3.UseVisualStyleBackColor = true;
+            logout_btn.Location = new Point(37, 245);
+            logout_btn.Name = "logout_btn";
+            logout_btn.Size = new Size(100, 23);
+            logout_btn.TabIndex = 12;
+            logout_btn.Text = "Logout";
+            logout_btn.UseVisualStyleBackColor = true;
+            logout_btn.Click += logout_btn_Click;
             // 
             // List_UsersBtn
             // 
@@ -80,6 +81,7 @@
             List_UsersBtn.TabIndex = 11;
             List_UsersBtn.Text = "List of User";
             List_UsersBtn.UseVisualStyleBackColor = true;
+            List_UsersBtn.Click += List_UsersBtn_Click;
             // 
             // button1
             // 
@@ -172,7 +174,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(panel1);
-            Controls.Add(button3);
+            Controls.Add(logout_btn);
             Controls.Add(List_UsersBtn);
             Controls.Add(button1);
             Controls.Add(panel2);
@@ -190,7 +192,7 @@
 
         private Panel panel1;
         private PictureBox pictureBox1;
-        private Button button3;
+        private Button logout_btn;
         private Button List_UsersBtn;
         private Button button1;
         private Panel panel2;

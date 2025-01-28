@@ -118,6 +118,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(302, 259);
             dataGridView1.TabIndex = 9;
+           
             // 
             // Users_Edit
             // 
@@ -162,7 +163,7 @@
             Controls.Add(panel1);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
-           
+            
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

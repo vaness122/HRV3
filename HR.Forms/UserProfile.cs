@@ -36,13 +36,25 @@ namespace HR.Forms
                 return;
             }
 
-            if(_loggedInUsername != newUsername)
+            if (_loggedInUsername != newUsername)
             {
                 _userRepository.UpdateUser(_loggedInUsername, newUsername);
             }
 
-            _userRepository.UpdateUserPassword(newUsername,newPassword);
+            _userRepository.UpdateUserPassword(newUsername, newPassword);
 
+
+        }
+
+        private void List_UsersBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UserDashboard dashboard = new UserDashboard(_userRepository, _loggedInUsername);
+            dashboard.Show();
+        }
+
+        private void logout_btn_Click(object sender, EventArgs e)
+        {
 
         }
     }
