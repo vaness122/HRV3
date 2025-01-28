@@ -30,17 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserProfile));
             panel1 = new Panel();
+            label1 = new Label();
             pictureBox1 = new PictureBox();
+<<<<<<< HEAD
             logout_btn = new Button();
+=======
+            lblLogout = new Button();
+>>>>>>> 1c6e5bbe752d41f163482e91f85cf3605bb631b3
             List_UsersBtn = new Button();
             button1 = new Button();
             panel2 = new Panel();
-            label1 = new Label();
+            Name_Txt = new Label();
             EditUser_Btn = new Button();
             updatePassword_Btn = new TextBox();
             updateUsernameTextBox = new TextBox();
             label3 = new Label();
             label2 = new Label();
+            panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -48,10 +54,22 @@
             // panel1
             // 
             panel1.BackColor = Color.DarkSeaGreen;
+            panel1.Controls.Add(label1);
             panel1.Location = new Point(-7, -2);
             panel1.Name = "panel1";
             panel1.Size = new Size(609, 30);
             panel1.TabIndex = 9;
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = SystemColors.ButtonFace;
+            label1.Location = new Point(579, -2);
+            label1.Name = "label1";
+            label1.Size = new Size(29, 29);
+            label1.TabIndex = 19;
+            label1.Text = "X";
+            label1.Click += label1_Click;
             // 
             // pictureBox1
             // 
@@ -63,6 +81,7 @@
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
             // 
+<<<<<<< HEAD
             // logout_btn
             // 
             logout_btn.Location = new Point(37, 245);
@@ -72,6 +91,17 @@
             logout_btn.Text = "Logout";
             logout_btn.UseVisualStyleBackColor = true;
             logout_btn.Click += logout_btn_Click;
+=======
+            // lblLogout
+            // 
+            lblLogout.Location = new Point(37, 245);
+            lblLogout.Name = "lblLogout";
+            lblLogout.Size = new Size(100, 23);
+            lblLogout.TabIndex = 12;
+            lblLogout.Text = "Logout";
+            lblLogout.UseVisualStyleBackColor = true;
+            lblLogout.Click += lblLogout_Click;
+>>>>>>> 1c6e5bbe752d41f163482e91f85cf3605bb631b3
             // 
             // List_UsersBtn
             // 
@@ -91,26 +121,30 @@
             button1.TabIndex = 10;
             button1.Text = "Profile";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // panel2
             // 
             panel2.BackColor = Color.Cornsilk;
             panel2.Controls.Add(pictureBox1);
-            panel2.Controls.Add(label1);
+            panel2.Controls.Add(Name_Txt);
+            panel2.Font = new Font("Tahoma", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             panel2.Location = new Point(-7, 27);
             panel2.Name = "panel2";
             panel2.Size = new Size(200, 407);
             panel2.TabIndex = 13;
             // 
-            // label1
+            // Name_Txt
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Tahoma", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(69, 150);
-            label1.Name = "label1";
-            label1.Size = new Size(61, 14);
-            label1.TabIndex = 3;
-            label1.Text = "Username";
+            Name_Txt.AutoSize = true;
+            Name_Txt.Font = new Font("Tahoma", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Name_Txt.Location = new Point(44, 145);
+            Name_Txt.Name = "Name_Txt";
+            Name_Txt.Size = new Size(80, 19);
+            Name_Txt.TabIndex = 3;
+            Name_Txt.Text = "Username";
+            Name_Txt.TextAlign = ContentAlignment.MiddleCenter;
+           
             // 
             // EditUser_Btn
             // 
@@ -167,20 +201,27 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(538, 433);
+            ClientSize = new Size(602, 429);
             Controls.Add(EditUser_Btn);
             Controls.Add(updatePassword_Btn);
             Controls.Add(updateUsernameTextBox);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(panel1);
+<<<<<<< HEAD
             Controls.Add(logout_btn);
+=======
+            Controls.Add(lblLogout);
+>>>>>>> 1c6e5bbe752d41f163482e91f85cf3605bb631b3
             Controls.Add(List_UsersBtn);
             Controls.Add(button1);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "UserProfile";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "UserProfile";
+            Load += UserProfile_Load;
+            panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -192,15 +233,20 @@
 
         private Panel panel1;
         private PictureBox pictureBox1;
+<<<<<<< HEAD
         private Button logout_btn;
+=======
+        private Button lblLogout;
+>>>>>>> 1c6e5bbe752d41f163482e91f85cf3605bb631b3
         private Button List_UsersBtn;
         private Button button1;
         private Panel panel2;
-        private Label label1;
+        private Label Name_Txt;
         private Button EditUser_Btn;
         private TextBox updatePassword_Btn;
         private TextBox updateUsernameTextBox;
         private Label label3;
         private Label label2;
+        private Label label1;
     }
 }

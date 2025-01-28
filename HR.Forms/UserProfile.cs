@@ -25,27 +25,85 @@ namespace HR.Forms
             _loggedInUsername = Username;
         }
 
-        private void EditUser_Btn_Click(object sender, EventArgs e)
+        private async void EditUser_Btn_Click(object sender, EventArgs e)
         {
             string newUsername = updateUsernameTextBox.Text;
             string newPassword = updatePassword_Btn.Text;
 
+            // Check if both fields are filled
             if (string.IsNullOrEmpty(newUsername) || string.IsNullOrWhiteSpace(newPassword))
             {
-                MessageBox.Show("please fill both fields");
+                MessageBox.Show("Please fill both fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
+<<<<<<< HEAD
+=======
+            // Update username if it's different
+>>>>>>> 1c6e5bbe752d41f163482e91f85cf3605bb631b3
             if (_loggedInUsername != newUsername)
             {
-                _userRepository.UpdateUser(_loggedInUsername, newUsername);
+                try
+                {
+                    await _userRepository.UpdateUser(_loggedInUsername, newUsername);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Failed to update username. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
             }
 
+<<<<<<< HEAD
             _userRepository.UpdateUserPassword(newUsername, newPassword);
+=======
+            // Update password
+            try
+            {
+                await _userRepository.UpdateUserPassword(newUsername, newPassword);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Failed to update password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+>>>>>>> 1c6e5bbe752d41f163482e91f85cf3605bb631b3
 
+            // If both updates are successful, show a success message
+            MessageBox.Show("Your changes have been successfully saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            // Optionally update the logged-in username if the username was changed
 
         }
 
+<<<<<<< HEAD
+=======
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void UserProfile_Load(object sender, EventArgs e)
+        {
+            Name_Txt.Text = _loggedInUsername;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void lblLogout_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show("You have logged out successfully!", "Logout", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.Close();
+            Login login = new Login(_userRepository);
+            login.Show();
+        }
+
+>>>>>>> 1c6e5bbe752d41f163482e91f85cf3605bb631b3
         private void List_UsersBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -53,9 +111,13 @@ namespace HR.Forms
             dashboard.Show();
         }
 
+<<<<<<< HEAD
         private void logout_btn_Click(object sender, EventArgs e)
         {
 
         }
+=======
+       
+>>>>>>> 1c6e5bbe752d41f163482e91f85cf3605bb631b3
     }
 }

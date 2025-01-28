@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             panel1 = new Panel();
-            label1 = new Label();
+            lbl2close = new Label();
             Login_Btn = new Button();
             label4 = new Label();
             pictureBox1 = new PictureBox();
@@ -48,22 +48,23 @@
             // panel1
             // 
             panel1.BackColor = Color.DarkSeaGreen;
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(lbl2close);
             panel1.Location = new Point(-3, -1);
             panel1.Name = "panel1";
             panel1.Size = new Size(600, 35);
             panel1.TabIndex = 7;
             // 
-            // label1
+            // lbl2close
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ButtonFace;
-            label1.Location = new Point(566, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(30, 32);
-            label1.TabIndex = 0;
-            label1.Text = "X";
+            lbl2close.AutoSize = true;
+            lbl2close.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl2close.ForeColor = SystemColors.ButtonFace;
+            lbl2close.Location = new Point(566, 0);
+            lbl2close.Name = "lbl2close";
+            lbl2close.Size = new Size(30, 32);
+            lbl2close.TabIndex = 0;
+            lbl2close.Text = "X";
+            lbl2close.Click += label1_Click;
             // 
             // Login_Btn
             // 
@@ -109,15 +110,17 @@
             Login_To_RegisterBtn.TabIndex = 13;
             Login_To_RegisterBtn.Text = "Register";
             Login_To_RegisterBtn.UseVisualStyleBackColor = false;
-           
+            Login_To_RegisterBtn.Click += Login_To_RegisterBtn_Click;
             // 
             // Password_Login
             // 
             Password_Login.Font = new Font("Segoe UI", 10F);
             Password_Login.Location = new Point(60, 224);
             Password_Login.Name = "Password_Login";
+            Password_Login.PasswordChar = '*';
             Password_Login.Size = new Size(212, 25);
             Password_Login.TabIndex = 12;
+            Password_Login.TextChanged += Password_Login_TextChanged;
             // 
             // Username_Login
             // 
@@ -172,6 +175,7 @@
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Login";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -185,7 +189,7 @@
         #endregion
 
         private Panel panel1;
-        private Label label1;
+        private Label lbl2close;
         private Button Login_Btn;
         private Label label4;
         private PictureBox pictureBox1;
@@ -195,5 +199,6 @@
         private Label label3;
         private Label label2;
         private Panel panel2;
+        private string _loggedInUsername;
     }
 }

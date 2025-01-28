@@ -7,7 +7,7 @@ using System.Net.Http;
 
 namespace HR.Forms
 {
-    internal static class Program
+    public static class Program
     {
         private static IUserRepo userRepo;
         public static HttpClient HttpClient { get; } = new HttpClient();

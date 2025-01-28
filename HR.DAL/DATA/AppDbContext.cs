@@ -1,6 +1,5 @@
-﻿using HR.DAL.Models;
-using Microsoft.EntityFrameworkCore;
-using System;
+﻿using Microsoft.EntityFrameworkCore;
+using HR.DAL.Models;
 
 namespace HR.DAL.Data
 {

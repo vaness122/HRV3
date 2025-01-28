@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            lbl1close = new Label();
             panel1 = new Panel();
             panel2 = new Panel();
             Register_ToLoginBtn = new Button();
@@ -44,22 +44,22 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // lbl1close
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ButtonFace;
-            label1.Location = new Point(566, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(30, 32);
-            label1.TabIndex = 0;
-            label1.Text = "X";
-            label1.Click += label1_Click;
+            lbl1close.AutoSize = true;
+            lbl1close.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lbl1close.ForeColor = SystemColors.ButtonFace;
+            lbl1close.Location = new Point(566, 0);
+            lbl1close.Name = "lbl1close";
+            lbl1close.Size = new Size(30, 32);
+            lbl1close.TabIndex = 0;
+            lbl1close.Text = "X";
+            lbl1close.Click += label1_Click;
             // 
             // panel1
             // 
             panel1.BackColor = Color.DarkSeaGreen;
-            panel1.Controls.Add(label1);
+            panel1.Controls.Add(lbl1close);
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
             panel1.Size = new Size(596, 35);
@@ -119,7 +119,7 @@
             Register_Btn.TabIndex = 7;
             Register_Btn.Text = "Register";
             Register_Btn.UseVisualStyleBackColor = false;
-            this.Register_Btn.Click += new System.EventHandler(this.Register_Btn_Click);
+            Register_Btn.Click += Register_Btn_Click;
             // 
             // label2
             // 
@@ -154,6 +154,7 @@
             Password_Register.Font = new Font("Segoe UI", 10F);
             Password_Register.Location = new Point(343, 244);
             Password_Register.Name = "Password_Register";
+            Password_Register.PasswordChar = '*';
             Password_Register.Size = new Size(212, 25);
             Password_Register.TabIndex = 5;
             // 
@@ -172,6 +173,7 @@
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "Register";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Register";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -184,7 +186,7 @@
 
         #endregion
 
-        private Label label1;
+        private Label lbl1close;
         private Panel panel1;
         private Panel panel2;
         private Label label2;
