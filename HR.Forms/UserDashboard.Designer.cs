@@ -76,8 +76,7 @@
             Name.Size = new Size(61, 14);
             Name.TabIndex = 3;
             Name.Text = "Username";
-            Name.Click += Name_Click;
-
+           
             // 
             // Profile_Btn
             // 
@@ -181,7 +180,9 @@
             Controls.Add(panel1);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
+           
             StartPosition = FormStartPosition.CenterScreen;
+            Load += UserDashboard_Load;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
@@ -189,8 +190,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
-
-
         }
 
 

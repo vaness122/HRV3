@@ -128,7 +128,7 @@
             Name_Txt.TabIndex = 3;
             Name_Txt.Text = "Username";
             Name_Txt.TextAlign = ContentAlignment.MiddleCenter;
-            Name_Txt.Click += Name_Txt_Click;
+           
             // 
             // EditUser_Btn
             // 

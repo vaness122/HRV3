@@ -127,11 +127,12 @@ namespace HR.Forms
             login.Show();
         }
 
-        private void Name_Click(object sender, EventArgs e)
-{
-          Name.Text = _loggedInUsername; 
-}
+        
 
+        private void UserDashboard_Load(object sender, EventArgs e)
+        {
+            Name.Text = _loggedInUsername;
+        }
     }
 }
 

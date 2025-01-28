@@ -22,7 +22,7 @@ namespace HR.Forms
 
             var serviceProvider = new ServiceCollection()
      .AddDbContext<AppDbContext>(options =>
-         options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=HRDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True"))
+         options.UseSqlServer("Server=DESKTOP-AOJDK8M;Database=HRDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True"))
      .AddScoped<IUserRepo, UserRepo>()
      .BuildServiceProvider();
 

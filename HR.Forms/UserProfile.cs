@@ -77,7 +77,7 @@ namespace HR.Forms
 
         private void UserProfile_Load(object sender, EventArgs e)
         {
-
+            Name_Txt.Text = _loggedInUsername;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -101,10 +101,6 @@ namespace HR.Forms
             dashboard.Show();
         }
 
-        private void Name_Txt_Click(object sender, EventArgs e)
-        {
-            Name_Txt.Text = _loggedInUsername;
-
-        }
+       
     }
 }
