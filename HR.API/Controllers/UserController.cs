@@ -26,9 +26,9 @@ namespace HR.API.Controllers
                 await _userRepository.AddUser(user.Username, user.Password);
                 return Ok("User registered successfully.");
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                return StatusCode(500, "Error: " + ex.Message);
+                return StatusCode(500, "Error: " + e.Message);
             }
         }
 
