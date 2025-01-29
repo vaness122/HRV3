@@ -10,11 +10,8 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
-<<<<<<< HEAD
   <ItemGroup>
     <ProjectReference Include="..\HR.DAL\HR.DAL.csproj" />
   </ItemGroup>
 
-=======
->>>>>>> Vanvan
 </Project>
