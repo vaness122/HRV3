@@ -1,4 +1,4 @@
-@HR.API_HostAddress = http://localhost:5167
+@HR.API_HostAddress = http://localhost:5205
 
 GET {{HR.API_HostAddress}}/weatherforecast/
 Accept: application/json
