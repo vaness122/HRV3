@@ -38,6 +38,7 @@ namespace HR.Forms
             }
 
             // Update username if it's different
+
             if (_loggedInUsername != newUsername)
             {
                 try
@@ -51,6 +52,9 @@ namespace HR.Forms
                 }
             }
 
+
+            _userRepository.UpdateUserPassword(newUsername, newPassword);
+
             // Update password
             try
             {
@@ -61,6 +65,7 @@ namespace HR.Forms
                 MessageBox.Show("Failed to update password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
 
             // If both updates are successful, show a success message
             MessageBox.Show("Your changes have been successfully saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -94,6 +99,7 @@ namespace HR.Forms
             login.Show();
         }
 
+
         private void List_UsersBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -101,6 +107,11 @@ namespace HR.Forms
             dashboard.Show();
         }
 
-       
+
+        private void logout_btn_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

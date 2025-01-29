@@ -1,4 +1,8 @@
-@HR.API_HostAddress = http://localhost:5100
+<<<<<<< HEAD
+@HR.API_HostAddress = http://localhost:5244
+=======
+@HR.API_HostAddress = http://localhost:5075
+>>>>>>> Vanessa
 
 GET {{HR.API_HostAddress}}/weatherforecast/
 Accept: application/json

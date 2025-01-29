@@ -135,8 +135,11 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(302, 259);
             dataGridView1.TabIndex = 9;
+
+           
+
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-            // 
+
             // Users_Edit
             // 
             Users_Edit.Location = new Point(386, 346);
@@ -180,10 +183,13 @@
             Controls.Add(panel1);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
+
+
            
             StartPosition = FormStartPosition.CenterScreen;
             Load += UserDashboard_Load;
             panel1.ResumeLayout(false);
+
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

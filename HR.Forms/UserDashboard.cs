@@ -95,6 +95,7 @@ namespace HR.Forms
             prof.Show();
         }
 
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -133,6 +134,7 @@ namespace HR.Forms
         {
             Name.Text = _loggedInUsername;
         }
+
     }
 }
 

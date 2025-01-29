@@ -7,6 +7,8 @@ namespace HR.Forms
     public partial class Register : Form
     {
         private readonly IUserRepo _userRepository;
+      
+       
 
         public Register(IUserRepo userRepository)
         {
@@ -14,7 +16,7 @@ namespace HR.Forms
             _userRepository = userRepository;
         }
 
-
+        
 
         private void Register_ToLoginBtn_Click(object sender, EventArgs e)
         {
