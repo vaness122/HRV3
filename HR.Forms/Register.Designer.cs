@@ -87,8 +87,7 @@
             Register_ToLoginBtn.TabIndex = 6;
             Register_ToLoginBtn.Text = "Login";
             Register_ToLoginBtn.UseVisualStyleBackColor = false;
-            Register_ToLoginBtn.Click += Register_ToLoginBtn_Click;
-            // 
+           
             // label4
             // 
             label4.AutoSize = true;

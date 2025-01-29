@@ -7,14 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
   </ItemGroup>
 
 <<<<<<< HEAD
+=======
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+    <PackageReference Include="System.Net.Http.Json" Version="9.0.1" />
+  </ItemGroup>
+
+>>>>>>> Vanessa
   <ItemGroup>
     <ProjectReference Include="..\HR.DAL\HR.DAL.csproj" />
   </ItemGroup>
 
+<<<<<<< HEAD
 =======
 >>>>>>> Vanvan
+=======
+>>>>>>> Vanessa
 </Project>
