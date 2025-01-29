@@ -1,36 +1,22 @@
-﻿using HR.DAL.Repository;
+﻿using HR.DAL.Models;
 using System;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Newtonsoft.Json;
 namespace HR.Forms
 {
     public partial class Register : Form
     {
-        private readonly IUserRepo _userRepository;
-      
-       
+        private static readonly HttpClient client = new HttpClient();
 
-        public Register(IUserRepo userRepository)
+        public Register()
         {
             InitializeComponent();
-            _userRepository = userRepository;
         }
 
-        
-
-        private void Register_ToLoginBtn_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Login log = new Login(_userRepository);
-            log.Show();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private  void Register_Btn_Click(object sender, EventArgs e)
+        private async void Register_Btn_Click(object sender, EventArgs e)
         {
             string Username = Username_Register.Text;
             string Password = Password_Register.Text;
@@ -41,22 +27,51 @@ namespace HR.Forms
                 return;
             }
 
+            var user = new User
+            {
+                Username = Username,
+                Password = Password
+            };
+
             try
             {
-                Console.WriteLine($"Attempting to register user: {Username}");
 
-                
-                 _userRepository.AddUser(Username, Password);
-                MessageBox.Show("User Registered Successfully");
+                string json = JsonConvert.SerializeObject(user);
 
-                
-                Username_Register.Clear();
-                Password_Register.Clear();
+
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+
+                HttpResponseMessage response = await client.PostAsync("http://localhost:5000/api/user/register", content);
+
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("User Registered Successfully");
+                    Username_Register.Clear();
+                    Password_Register.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Error: " + response.ReasonPhrase);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+        }
+
+        private void Register_ToLoginBtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login log = new Login();
+            log.Show();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
