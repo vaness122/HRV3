@@ -1,4 +1,9 @@
 
+using HR.DAL.Data;
+using HR.DAL.Repository;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 namespace HR.API
 {
     public class Program
@@ -6,9 +11,9 @@ namespace HR.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
-            // Add services to the container.
-
+            builder.Services.AddTransient<DbContextOptions<AppDbContext>>();
+            builder.Services.AddTransient<AppDbContext>(); 
+            builder.Services.AddTransient<IUserRepo, UserRepo>();   
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

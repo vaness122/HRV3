@@ -1,43 +1,60 @@
-﻿using HR.DAL.Repository;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+﻿using System;
+using System.Net.Http;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using HR.DAL.Repository;
+using Newtonsoft.Json;
 
 namespace HR.Forms
 {
     public partial class Login : Form
     {
-        private readonly IUserRepo _userRepository;
-        public Login(IUserRepo userRepository)
+        private readonly IUserRepo _userRepository; // Add reference to IUserRepo
+        private readonly HttpClient _httpClient;
+        private readonly string _apiBaseUrl = "https://localhost:7293/api/";
+
+        public Login(IUserRepo userRepository) // Inject IUserRepo
         {
             InitializeComponent();
             _userRepository = userRepository;
+            _httpClient = new HttpClient();
+            _httpClient.BaseAddress = new Uri(_apiBaseUrl);
         }
-
 
         private void X_Btn_Click(object sender, EventArgs e)
         {
             Close();
         }
-        private void Login_Btn_Click(object sender, EventArgs e)
+
+        private async void Login_Btn_Click(object sender, EventArgs e)
         {
-            string Username = Username_Login.Text;
-            string Password = Password_Login.Text;
+            string username = Username_Login.Text;
+            string password = Password_Login.Text;
+
+            // Validate input fields
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            {
+                MessageBox.Show("Username or Password cannot be empty.");
+                return;
+            }
 
             try
             {
-                bool isAuthenticated = _userRepository.AuthenticUser(Username, Password);
-                if (isAuthenticated)
+                var user = new { Username = username, Password = password };
+
+                // Serialize the user object to JSON
+                var jsonContent = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
+
+                // Send a POST request to the authenticate API endpoint
+                var response = await _httpClient.PostAsync("user/authenticate", jsonContent);
+
+                if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Login is Successful");
                     this.Hide();
-                    UserDashboard userDashboard = new UserDashboard(_userRepository, Username);
+
+                    // Pass the userRepository and username to the UserDashboard constructor
+                    UserDashboard userDashboard = new UserDashboard(_userRepository, username);
                     userDashboard.Show();
                 }
                 else
@@ -47,31 +64,26 @@ namespace HR.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error" + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
-
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void Login_To_RegisterBtn_Click(object sender, EventArgs e)
         {
-            {
-
-                Register register = new Register(_userRepository);
-                register.Show();
-
-                // Optionally, hide the current Login form (if you don't want it to remain open)
-                this.Hide();
-            }
+            this.Hide();
+            Register register = new Register(_userRepository);
+            register.Show();
         }
 
+        // Password TextChanged event handler (if needed)
         private void Password_Login_TextChanged(object sender, EventArgs e)
         {
-
+            // Add your logic here if you want to handle text changes for password
         }
     }
 }

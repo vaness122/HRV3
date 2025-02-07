@@ -78,10 +78,7 @@ namespace HR.DAL.Repository
             throw new NotImplementedException();
         }
 
-        public Task<List<User>> GetAllUserAsyncs()
-        {
-            throw new NotImplementedException();
-        }
+     
 
         public async Task UpdateUser(string oldUsername, string newUsername)
         {
