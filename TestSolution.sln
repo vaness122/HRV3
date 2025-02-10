@@ -7,9 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR.DAL", "HR.DAL\HR.DAL.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR.Forms", "HR.Forms\HR.Forms.csproj", "{FB55E48C-5A17-4312-95B8-E2843883D70A}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.API", "HR.API\HR.API.csproj", "{9E086FBA-4738-491A-9DB3-52847ACFA5EC}"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "react-frontend", "React-frontend\react-frontend.esproj", "{5274A787-6929-45F8-BEC3-79DCF5B048AA}"
+=======
+
+>>>>>>> 3fd09b1e563632af9d8139ea5ba6b9f960fbc39d
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +29,7 @@ Global
 		{FB55E48C-5A17-4312-95B8-E2843883D70A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB55E48C-5A17-4312-95B8-E2843883D70A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB55E48C-5A17-4312-95B8-E2843883D70A}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
 		{9E086FBA-4738-491A-9DB3-52847ACFA5EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9E086FBA-4738-491A-9DB3-52847ACFA5EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E086FBA-4738-491A-9DB3-52847ACFA5EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,6 +40,9 @@ Global
 		{5274A787-6929-45F8-BEC3-79DCF5B048AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5274A787-6929-45F8-BEC3-79DCF5B048AA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5274A787-6929-45F8-BEC3-79DCF5B048AA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+=======
+
+>>>>>>> 3fd09b1e563632af9d8139ea5ba6b9f960fbc39d
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
