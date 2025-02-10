@@ -6,8 +6,11 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR.DAL", "HR.DAL\HR.DAL.csproj", "{6DAA5082-5D5B-4462-B6E0-BB0E7C96DB0C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR.Forms", "HR.Forms\HR.Forms.csproj", "{FB55E48C-5A17-4312-95B8-E2843883D70A}"
+<<<<<<< HEAD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR.API", "HR.API\HR.API.csproj", "{6D416845-17BE-4B47-A623-8D0A6F02A2CB}"
+=======
+>>>>>>> fd940f40ba5943c2d01a0a7a7afe304921f1616c
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

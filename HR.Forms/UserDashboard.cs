@@ -16,14 +16,15 @@ namespace HR.Forms
     {
         private readonly IUserRepo _userRepository;
         private readonly string _loggedInUsername;
-        public UserDashboard(IUserRepo userRepository, string Username)
+        public UserDashboard()
         {
             InitializeComponent();
-            _userRepository = userRepository;
-            _loggedInUsername = Username;
+           
         }
 
+        private static readonly HttpClient client = new HttpClient();
 
+       
         private async void LoadUserData()
         {
             try
@@ -39,21 +40,20 @@ namespace HR.Forms
                 MessageBox.Show("Error loading users: " + ex.Message);
             }
         }
-        private void Users_Delete_Click(object sender, EventArgs e)
+        private async void Users_Delete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
-
             {
                 string username = dataGridView1.SelectedRows[0].Cells["Username"].Value.ToString();
                 try
                 {
-                    _userRepository.DeleteUser(username);
+                    await _userRepository.DeleteUser(username);
                     MessageBox.Show("User deleted successfully");
                     LoadUserData();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error deleting user" + ex.Message);
+                    MessageBox.Show("Error deleting user: " + ex.Message);
                 }
             }
             else
@@ -61,6 +61,7 @@ namespace HR.Forms
                 MessageBox.Show("Please select a user to delete");
             }
         }
+
 
         private void Users_Edit_Click(object sender, EventArgs e)
         {
@@ -124,7 +125,7 @@ namespace HR.Forms
             this.Close();
 
             // Optionally show the login form (make sure it's in the correct namespace)
-            Login login = new Login(_userRepository);
+            Login login = new Login();
             login.Show();
         }
 
@@ -134,6 +135,7 @@ namespace HR.Forms
         {
             Name.Text = _loggedInUsername;
         }
+
 
     }
 }

@@ -1,43 +1,58 @@
-﻿using HR.DAL.Repository;
+﻿using HR.DAL.Models;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace HR.Forms
 {
     public partial class Login : Form
     {
-        private readonly IUserRepo _userRepository;
-        public Login(IUserRepo userRepository)
+        private static readonly HttpClient client = new HttpClient();
+        public Login()
         {
             InitializeComponent();
-            _userRepository = userRepository;
         }
 
-
-        private void X_Btn_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-        private void Login_Btn_Click(object sender, EventArgs e)
+        private async void Login_Btn_Click(object sender, EventArgs e)
         {
             string Username = Username_Login.Text;
             string Password = Password_Login.Text;
 
+            if (string.IsNullOrEmpty(Username) || string.IsNullOrEmpty(Password))
+            {
+                MessageBox.Show("Username or Password cannot be empty.");
+                return;
+            }
+
+            var user = new User
+            {
+                Username = Username,
+                Password = Password
+            };
+
             try
             {
-                bool isAuthenticated = _userRepository.AuthenticUser(Username, Password);
-                if (isAuthenticated)
+
+                string json = JsonConvert.SerializeObject(user);
+
+
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+
+
+                HttpResponseMessage response = await client.PostAsync("http://localhost:5000/api/user/authenticate", content);
+
+
+                if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Login is Successful");
+
+
+
                     this.Hide();
-                    UserDashboard userDashboard = new UserDashboard(_userRepository, Username);
+                    UserDashboard userDashboard = new UserDashboard();
                     userDashboard.Show();
                 }
                 else
@@ -47,9 +62,13 @@ namespace HR.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error" + ex.Message);
+                MessageBox.Show("Error: " + ex.Message);
             }
+        }
 
+        private void X_Btn_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -59,14 +78,11 @@ namespace HR.Forms
 
         private void Login_To_RegisterBtn_Click(object sender, EventArgs e)
         {
-            {
+            Register register = new Register();
+            register.Show();
 
-                Register register = new Register(_userRepository);
-                register.Show();
 
-                // Optionally, hide the current Login form (if you don't want it to remain open)
-                this.Hide();
-            }
+            this.Hide();
         }
 
         private void Password_Login_TextChanged(object sender, EventArgs e)

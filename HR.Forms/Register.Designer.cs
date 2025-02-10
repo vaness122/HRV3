@@ -20,6 +20,8 @@
             base.Dispose(disposing);
         }
 
+
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -194,6 +196,7 @@
         private TextBox Username_Register;
         private TextBox Password_Register;
         private Button Register_ToLoginBtn;
+
         private Button Register_Btn;
         private Label label4;
         private PictureBox pictureBox1;

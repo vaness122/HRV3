@@ -13,7 +13,7 @@ namespace HR.Forms
 {
     public partial class UserProfile : Form
     {
-
+        private static readonly HttpClient client = new HttpClient();
         private readonly IUserRepo _userRepository;
         private readonly string _loggedInUsername;
 
@@ -21,8 +21,7 @@ namespace HR.Forms
         public UserProfile(IUserRepo userRepository, string Username)
         {
             InitializeComponent();
-            _userRepository = userRepository;
-            _loggedInUsername = Username;
+            
         }
 
         private async void EditUser_Btn_Click(object sender, EventArgs e)
@@ -95,7 +94,7 @@ namespace HR.Forms
 
             MessageBox.Show("You have logged out successfully!", "Logout", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
-            Login login = new Login(_userRepository);
+            Login login = new Login();
             login.Show();
         }
 
@@ -103,7 +102,7 @@ namespace HR.Forms
         private void List_UsersBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            UserDashboard dashboard = new UserDashboard(_userRepository, _loggedInUsername);
+            UserDashboard dashboard = new UserDashboard();
             dashboard.Show();
         }
 
