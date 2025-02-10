@@ -16,4 +16,7 @@
     <ProjectReference Include="..\HR.DAL\HR.DAL.csproj" />
   </ItemGroup>
 
+
+
 </Project>
+

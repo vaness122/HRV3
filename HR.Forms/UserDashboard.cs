@@ -1,14 +1,10 @@
 ﻿using HR.DAL.Repository;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml;
 
 namespace HR.Forms
 {
@@ -16,10 +12,23 @@ namespace HR.Forms
     {
         private readonly IUserRepo _userRepository;
         private readonly string _loggedInUsername;
+<<<<<<< HEAD
         public UserDashboard()
         {
             InitializeComponent();
            
+=======
+
+        // Modify this constructor to accept both IUserRepo and the logged-in username
+        public UserDashboard(IUserRepo userRepository, string loggedInUsername)
+        {
+            InitializeComponent();
+            _userRepository = userRepository;
+            _loggedInUsername = loggedInUsername;
+
+            // Use _loggedInUsername for user-related UI or data
+            Name.Text = _loggedInUsername;
+>>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
         }
 
         private static readonly HttpClient client = new HttpClient();
@@ -29,10 +38,7 @@ namespace HR.Forms
         {
             try
             {
-                // Fetch the list of users
                 var users = await _userRepository.GetAllUserAsyncs();
-
-                // Bind the list of users to the DataGridView
                 dataGridView1.DataSource = users;
             }
             catch (Exception ex)
@@ -40,7 +46,12 @@ namespace HR.Forms
                 MessageBox.Show("Error loading users: " + ex.Message);
             }
         }
+<<<<<<< HEAD
         private async void Users_Delete_Click(object sender, EventArgs e)
+=======
+
+        private void Users_Delete_Click(object sender, EventArgs e)
+>>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
@@ -70,23 +81,16 @@ namespace HR.Forms
                 string oldUsername = dataGridView1.SelectedRows[0].Cells["Username"].Value.ToString();
                 string newUsername = updateUsernameTextBox.Text;
                 try
-
                 {
                     _userRepository.UpdateUser(oldUsername, newUsername);
-                    MessageBox.Show("User updated Successfully");
-
+                    MessageBox.Show("User updated successfully");
                     LoadUserData();
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error updating user" + ex.Message);
+                    MessageBox.Show("Error updating user: " + ex.Message);
                 }
-
-
-
-
             }
-
         }
 
         private void Profile_Btn_Click(object sender, EventArgs e)
@@ -96,11 +100,15 @@ namespace HR.Forms
             prof.Show();
         }
 
+<<<<<<< HEAD
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+=======
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+>>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -109,35 +117,33 @@ namespace HR.Forms
 
         private async void lbl_listofuser_Click(object sender, EventArgs e)
         {
-            // Fetch the list of all users
             var users = await _userRepository.GetAllUserAsyncs();
-
-            // Bind the list of users to your DataGridView (or any other control you're using)
             dataGridView1.DataSource = users;
         }
 
         private void btn_logout_Click(object sender, EventArgs e)
         {
-            // Logout logic here
             MessageBox.Show("You have logged out successfully!", "Logout", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Close the current form
             this.Close();
 
+<<<<<<< HEAD
             // Optionally show the login form (make sure it's in the correct namespace)
             Login login = new Login();
+=======
+            // Assuming Login form requires IUserRepo (e.g. dependency injection)
+            Login login = new Login(_userRepository);
+>>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
             login.Show();
         }
-
-        
 
         private void UserDashboard_Load(object sender, EventArgs e)
         {
             Name.Text = _loggedInUsername;
         }
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
     }
 }
-
-

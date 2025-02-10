@@ -36,6 +36,11 @@ namespace HR.Forms
                 return;
             }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
             // Update username if it's different
 
             if (_loggedInUsername != newUsername)
@@ -52,9 +57,14 @@ namespace HR.Forms
             }
 
 
+<<<<<<< HEAD
             _userRepository.UpdateUserPassword(newUsername, newPassword);
 
             // Update password
+=======
+            await _userRepository.UpdateUserPassword(newUsername, newPassword);
+
+>>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
             try
             {
                 await _userRepository.UpdateUserPassword(newUsername, newPassword);
@@ -64,15 +74,22 @@ namespace HR.Forms
                 MessageBox.Show("Failed to update password. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
 
 
-            // If both updates are successful, show a success message
             MessageBox.Show("Your changes have been successfully saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            // Optionally update the logged-in username if the username was changed
+        
 
         }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
 
         private void button1_Click(object sender, EventArgs e)
         {

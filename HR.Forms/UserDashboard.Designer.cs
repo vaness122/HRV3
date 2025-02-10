@@ -136,7 +136,14 @@
             dataGridView1.Size = new Size(302, 259);
             dataGridView1.TabIndex = 9;
 
+<<<<<<< HEAD
          
+=======
+           
+
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+
+>>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
             // 
             // Users_Edit
             // 
@@ -182,6 +189,10 @@
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
 
+<<<<<<< HEAD
+=======
+            
+>>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
 
            
             StartPosition = FormStartPosition.CenterScreen;

@@ -210,6 +210,10 @@
             Controls.Add(panel1);
 
             Controls.Add(logout_btn);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
             Controls.Add(lblLogout);
 
             Controls.Add(List_UsersBtn);
