@@ -24,6 +24,7 @@ namespace HR.Forms
             Name.Text = _loggedInUsername;
         }
 
+        private static readonly HttpClient client = new HttpClient();
 
         private async void LoadUserData()
         {
@@ -38,14 +39,14 @@ namespace HR.Forms
             }
         }
 
-        private void Users_Delete_Click(object sender, EventArgs e)
+        private async Task Users_Delete_ClickAsync(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 string username = dataGridView1.SelectedRows[0].Cells["Username"].Value.ToString();
                 try
                 {
-                    _userRepository.DeleteUser(username);
+                    await _userRepository.DeleteUser(username);
                     MessageBox.Show("User deleted successfully");
                     LoadUserData();
                 }

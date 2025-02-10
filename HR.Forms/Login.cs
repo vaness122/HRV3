@@ -1,4 +1,5 @@
-﻿using System;
+using HR.DAL.Models;
+using System;
 using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
@@ -21,11 +22,6 @@ namespace HR.Forms
             _httpClient.BaseAddress = new Uri(_apiBaseUrl);
         }
 
-        private void X_Btn_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private async void Login_Btn_Click(object sender, EventArgs e)
         {
             string username = Username_Login.Text;
@@ -38,10 +34,10 @@ namespace HR.Forms
                 return;
             }
 
+            var user = new { Username = username, Password = password };
+
             try
             {
-                var user = new { Username = username, Password = password };
-
                 // Serialize the user object to JSON
                 var jsonContent = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
 
@@ -51,8 +47,8 @@ namespace HR.Forms
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Login is Successful");
-                    this.Hide();
 
+                    this.Hide();
                     // Pass the userRepository and username to the UserDashboard constructor
                     UserDashboard userDashboard = new UserDashboard(_userRepository, username);
                     userDashboard.Show();
@@ -66,6 +62,11 @@ namespace HR.Forms
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+        }
+
+        private void X_Btn_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void label1_Click(object sender, EventArgs e)

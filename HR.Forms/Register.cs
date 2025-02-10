@@ -1,10 +1,11 @@
-﻿using HR.DAL.Repository;
+﻿using HR.DAL.Models;
 using System;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using HR.DAL.Repository;
 
 namespace HR.Forms
 {
@@ -14,7 +15,7 @@ namespace HR.Forms
         private readonly string _apiBaseUrl = "https://localhost:7293/api/";
         private readonly IUserRepo _userRepository;
 
-        public Register(IUserRepo userRepository)
+        public Register(IUserRepo userRepository) // Injecting the user repository
         {
             InitializeComponent();
             _userRepository = userRepository;
@@ -34,11 +35,10 @@ namespace HR.Forms
                 return;
             }
 
+            var user = new { Username = username, Password = password };
+
             try
             {
-                // Create a user object to send to the API
-                var user = new { Username = username, Password = password };
-
                 // Serialize the user object to JSON
                 var jsonContent = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
 
@@ -49,7 +49,6 @@ namespace HR.Forms
                 if (response.IsSuccessStatusCode)
                 {
                     MessageBox.Show("User Registered Successfully");
-                    // Clear the input fields
                     Username_Register.Clear();
                     Password_Register.Clear();
                 }

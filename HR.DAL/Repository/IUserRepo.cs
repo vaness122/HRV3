@@ -15,8 +15,6 @@ namespace HR.DAL.Repository
 
         List<User> GetAllUser();
 
-
-
         Task<List<User>> GetAllUserAsyncs();
     }
 }
