@@ -65,7 +65,6 @@
             lblclose.Size = new Size(29, 29);
             lblclose.TabIndex = 20;
             lblclose.Text = "X";
-          
             // 
             // Name
             // 
@@ -76,7 +75,6 @@
             Name.Size = new Size(61, 14);
             Name.TabIndex = 3;
             Name.Text = "Username";
-           
             // 
             // Profile_Btn
             // 
@@ -86,7 +84,6 @@
             Profile_Btn.TabIndex = 4;
             Profile_Btn.Text = "Profile";
             Profile_Btn.UseVisualStyleBackColor = true;
-            
             // 
             // lbl_listofuser
             // 
@@ -96,7 +93,6 @@
             lbl_listofuser.TabIndex = 5;
             lbl_listofuser.Text = "List of User";
             lbl_listofuser.UseVisualStyleBackColor = true;
-           
             // 
             // btn_logout
             // 
@@ -106,7 +102,6 @@
             btn_logout.TabIndex = 6;
             btn_logout.Text = "Logout";
             btn_logout.UseVisualStyleBackColor = true;
-            
             // 
             // pictureBox1
             // 
@@ -135,15 +130,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(302, 259);
             dataGridView1.TabIndex = 9;
-
-<<<<<<< HEAD
-         
-=======
-           
-
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
-
->>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
             // 
             // Users_Edit
             // 
@@ -153,7 +140,6 @@
             Users_Edit.TabIndex = 10;
             Users_Edit.Text = "Edit";
             Users_Edit.UseVisualStyleBackColor = true;
-          
             // 
             // Users_Delete
             // 
@@ -163,7 +149,7 @@
             Users_Delete.TabIndex = 11;
             Users_Delete.Text = "Delete";
             Users_Delete.UseVisualStyleBackColor = true;
-            Users_Delete.Click += Users_Delete_Click;
+           
             // 
             // updateUsernameTextBox
             // 
@@ -188,17 +174,8 @@
             Controls.Add(panel1);
             Controls.Add(panel2);
             FormBorderStyle = FormBorderStyle.None;
-
-<<<<<<< HEAD
-=======
-            
->>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
-
-           
             StartPosition = FormStartPosition.CenterScreen;
-         
             panel1.ResumeLayout(false);
-
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
@@ -206,7 +183,6 @@
             ResumeLayout(false);
             PerformLayout();
         }
-
 
         #endregion
 

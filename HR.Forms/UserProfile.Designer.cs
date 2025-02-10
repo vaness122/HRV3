@@ -32,11 +32,7 @@
             panel1 = new Panel();
             label1 = new Label();
             pictureBox1 = new PictureBox();
-
             logout_btn = new Button();
-
-            lblLogout = new Button();
-
             List_UsersBtn = new Button();
             button1 = new Button();
             panel2 = new Panel();
@@ -46,10 +42,12 @@
             updateUsernameTextBox = new TextBox();
             label3 = new Label();
             label2 = new Label();
+
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             SuspendLayout();
+
             // 
             // panel1
             // 
@@ -59,6 +57,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(609, 30);
             panel1.TabIndex = 9;
+
             // 
             // label1
             // 
@@ -70,6 +69,7 @@
             label1.TabIndex = 19;
             label1.Text = "X";
             label1.Click += label1_Click;
+
             // 
             // pictureBox1
             // 
@@ -80,8 +80,8 @@
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
-            // 
 
+            // 
             // logout_btn
             // 
             logout_btn.Location = new Point(37, 245);
@@ -91,16 +91,6 @@
             logout_btn.Text = "Logout";
             logout_btn.UseVisualStyleBackColor = true;
             logout_btn.Click += logout_btn_Click;
-
-            // lblLogout
-            // 
-            lblLogout.Location = new Point(37, 245);
-            lblLogout.Name = "lblLogout";
-            lblLogout.Size = new Size(100, 23);
-            lblLogout.TabIndex = 12;
-            lblLogout.Text = "Logout";
-            lblLogout.UseVisualStyleBackColor = true;
-            lblLogout.Click += lblLogout_Click;
 
             // 
             // List_UsersBtn
@@ -112,6 +102,7 @@
             List_UsersBtn.Text = "List of User";
             List_UsersBtn.UseVisualStyleBackColor = true;
             List_UsersBtn.Click += List_UsersBtn_Click;
+
             // 
             // button1
             // 
@@ -122,6 +113,7 @@
             button1.Text = "Profile";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
+
             // 
             // panel2
             // 
@@ -133,6 +125,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(200, 407);
             panel2.TabIndex = 13;
+
             // 
             // Name_Txt
             // 
@@ -144,7 +137,7 @@
             Name_Txt.TabIndex = 3;
             Name_Txt.Text = "Username";
             Name_Txt.TextAlign = ContentAlignment.MiddleCenter;
-           
+
             // 
             // EditUser_Btn
             // 
@@ -158,6 +151,7 @@
             EditUser_Btn.Text = "Edit";
             EditUser_Btn.UseVisualStyleBackColor = false;
             EditUser_Btn.Click += EditUser_Btn_Click;
+
             // 
             // updatePassword_Btn
             // 
@@ -166,6 +160,7 @@
             updatePassword_Btn.Name = "updatePassword_Btn";
             updatePassword_Btn.Size = new Size(212, 25);
             updatePassword_Btn.TabIndex = 17;
+
             // 
             // updateUsernameTextBox
             // 
@@ -175,6 +170,7 @@
             updateUsernameTextBox.Name = "updateUsernameTextBox";
             updateUsernameTextBox.Size = new Size(212, 25);
             updateUsernameTextBox.TabIndex = 16;
+
             // 
             // label3
             // 
@@ -185,6 +181,7 @@
             label3.Size = new Size(79, 16);
             label3.TabIndex = 15;
             label3.Text = "Password :";
+
             // 
             // label2
             // 
@@ -195,6 +192,7 @@
             label2.Size = new Size(80, 16);
             label2.TabIndex = 14;
             label2.Text = "Username :";
+
             // 
             // UserProfile
             // 
@@ -208,13 +206,7 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(panel1);
-
-            Controls.Add(logout_btn);
-<<<<<<< HEAD
-=======
-
->>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
-            Controls.Add(lblLogout);
+            Controls.Add(logout_btn); // kept only logout_btn
 
             Controls.Add(List_UsersBtn);
             Controls.Add(button1);
@@ -224,6 +216,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "UserProfile";
             Load += UserProfile_Load;
+
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
@@ -236,11 +229,7 @@
 
         private Panel panel1;
         private PictureBox pictureBox1;
-
         private Button logout_btn;
-
-        private Button lblLogout;
-
         private Button List_UsersBtn;
         private Button button1;
         private Panel panel2;

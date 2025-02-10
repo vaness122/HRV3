@@ -89,17 +89,7 @@ namespace HR.DAL.Repository
             }
         }
 
-<<<<<<< HEAD
         // Update user locally (can also call API for external update if needed)
-=======
-        public List<User> GetAllUser()
-        {
-            throw new NotImplementedException();
-        }
-
-     
-
->>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
         public async Task UpdateUser(string oldUsername, string newUsername)
         {
             try

@@ -14,12 +14,7 @@ namespace HR.DAL.Repository
         bool AuthenticUser(string username, string password);
 
         List<User> GetAllUser();
-<<<<<<< HEAD
-=======
 
-
-
->>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
         Task<List<User>> GetAllUserAsyncs();
     }
 }

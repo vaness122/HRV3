@@ -28,7 +28,7 @@ namespace HR.Forms
 
             var userRepo = serviceProvider.GetRequiredService<IUserRepo>();
             ApplicationConfiguration.Initialize();
-            Application.Run(new Register());
+            Application.Run(new Register(userRepo));
         }
     }
 }

@@ -12,12 +12,6 @@ namespace HR.Forms
     {
         private readonly IUserRepo _userRepository;
         private readonly string _loggedInUsername;
-<<<<<<< HEAD
-        public UserDashboard()
-        {
-            InitializeComponent();
-           
-=======
 
         // Modify this constructor to accept both IUserRepo and the logged-in username
         public UserDashboard(IUserRepo userRepository, string loggedInUsername)
@@ -28,12 +22,10 @@ namespace HR.Forms
 
             // Use _loggedInUsername for user-related UI or data
             Name.Text = _loggedInUsername;
->>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
         }
 
         private static readonly HttpClient client = new HttpClient();
 
-       
         private async void LoadUserData()
         {
             try
@@ -46,12 +38,8 @@ namespace HR.Forms
                 MessageBox.Show("Error loading users: " + ex.Message);
             }
         }
-<<<<<<< HEAD
-        private async void Users_Delete_Click(object sender, EventArgs e)
-=======
 
-        private void Users_Delete_Click(object sender, EventArgs e)
->>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
+        private async Task Users_Delete_ClickAsync(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
@@ -72,7 +60,6 @@ namespace HR.Forms
                 MessageBox.Show("Please select a user to delete");
             }
         }
-
 
         private void Users_Edit_Click(object sender, EventArgs e)
         {
@@ -100,15 +87,7 @@ namespace HR.Forms
             prof.Show();
         }
 
-<<<<<<< HEAD
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-=======
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
->>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -126,13 +105,8 @@ namespace HR.Forms
             MessageBox.Show("You have logged out successfully!", "Logout", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
 
-<<<<<<< HEAD
-            // Optionally show the login form (make sure it's in the correct namespace)
-            Login login = new Login();
-=======
             // Assuming Login form requires IUserRepo (e.g. dependency injection)
             Login login = new Login(_userRepository);
->>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
             login.Show();
         }
 
@@ -140,10 +114,5 @@ namespace HR.Forms
         {
             Name.Text = _loggedInUsername;
         }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 03bf1a7a85430de312080e294821ce0d02e60dcc
     }
 }
