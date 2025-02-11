@@ -1,6 +1,6 @@
 // components/Register.js
 import React, { useState } from 'react';
-
+import { register } from '../services/api'; // Import the register function
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -10,17 +10,12 @@ const Register = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (password!== confirmPassword) {
+    if (password !== confirmPassword) {
       setError('Passwords do not match');
       return;
     }
     try {
-      const response = await fetch('https://localhost:5001/api/user/register', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
-      });
-      const data = await response.json();
+      const data = await register(username, password); // Use the API service
       if (data.success) {
         // Redirect to login
         window.location.href = '/';
@@ -35,13 +30,25 @@ const Register = () => {
   return (
     <form onSubmit={handleSubmit}>
       <label>Username:</label>
-      <input type="text" value={username} onChange={(event) => setUsername(event.target.value)} />
+      <input
+        type="text"
+        value={username}
+        onChange={(event) => setUsername(event.target.value)}
+      />
       <br />
       <label>Password:</label>
-      <input type="password" value={password} onChange={(event) => setPassword(event.target.value)} />
+      <input
+        type="password"
+        value={password}
+        onChange={(event) => setPassword(event.target.value)}
+      />
       <br />
       <label>Confirm Password:</label>
-      <input type="password" value={confirmPassword} onChange={(event) => setConfirmPassword(event.target.value)} />
+      <input
+        type="password"
+        value={confirmPassword}
+        onChange={(event) => setConfirmPassword(event.target.value)}
+      />
       <br />
       <button type="submit">Register</button>
       {error && <p style={{ color: 'red' }}>{error}</p>}
