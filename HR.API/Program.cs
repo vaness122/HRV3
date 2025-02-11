@@ -1,4 +1,3 @@
-
 using HR.DAL.Data;
 using HR.DAL.Repository;
 using Microsoft.EntityFrameworkCore;
@@ -15,13 +14,22 @@ namespace HR.API
             builder.Services.AddTransient<AppDbContext>(); 
             builder.Services.AddTransient<IUserRepo, UserRepo>();   
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    policy =>
+                    {
+                        policy.WithOrigins("http://localhost:5001")
+                         .AllowAnyMethod()
+                         .AllowAnyHeader()
+                         .AllowCredentials();
+                    });
+            });
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -29,10 +37,10 @@ namespace HR.API
             }
 
             app.UseHttpsRedirection();
-
+            app.UseCors();
             app.UseAuthorization();
-
-
+            app.MapFallbackToFile("index.html");
+            app.UseStaticFiles();
             app.MapControllers();
 
             app.Run();
