@@ -25,37 +25,24 @@ namespace HR.DAL.Repository
         {
             try
             {
-                // Check if user exists in the database before calling API
+                // Check if user exists in the database before adding
                 var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
                 if (existingUser != null)
                 {
                     throw new Exception("Username already exists.");
                 }
 
-                // Call external API to register user
+                // Create a new user and add to the database
                 var user = new User { Username = username, Password = password };
-                string json = JsonConvert.SerializeObject(user);
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                // Replace with your API URL for registration
-                HttpResponseMessage response = await client.PostAsync("http://localhost:5000/api/user/register", content);
-
-                if (response.IsSuccessStatusCode)
-                {
-                    // If successful, save to database
-                    _context.Add(user);
-                    await _context.SaveChangesAsync();
-                }
-                else
-                {
-                    throw new Exception("Error while registering user with API: " + response.ReasonPhrase);
-                }
+                _context.Add(user);
+                await _context.SaveChangesAsync();
             }
             catch (Exception ex)
             {
                 throw new Exception("Error while adding user: " + ex.Message);
             }
         }
+
 
         // Authenticate user (e.g., check credentials)
         public bool AuthenticUser(string username, string password)

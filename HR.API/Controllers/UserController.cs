@@ -18,6 +18,8 @@ namespace HR.API.Controllers
             _userRepository = userRepository;
         }
 
+
+
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] User user)
         {
@@ -31,8 +33,9 @@ namespace HR.API.Controllers
                 return StatusCode(500, "Error: " + ex.Message);
             }
         }
+    
 
-        [HttpPost("authenticate")]
+    [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody] User user)
         {
             try
