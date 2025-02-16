@@ -1,10 +1,13 @@
+// Login.jsx
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -17,8 +20,30 @@ const Login = () => {
 
       if (response.status === 200) {
         alert("Login successful!");
-        // Redirect or perform other actions after successful login
+
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+     
       }
+
+
+
+
+
     } catch (err) {
       setError("Invalid username or password");
       console.error("Login error:", err);
