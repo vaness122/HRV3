@@ -1,10 +1,11 @@
 // App.js
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-
+import Profile from './components/Profile';
 import Register from './components/Register';
 import Login from './components/Login';
-
+import Dashboard from './components/Dashboard';
+import UserList from './components/UserList';
 import './App.css';
 
 const App = () => {
@@ -34,7 +35,9 @@ const App = () => {
        
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login/>} />
-         
+          <Route path="/dashboard" element={<Dashboard/>} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/users" element={<UserList />} />
         </Routes>
       </div>
     </Router>
