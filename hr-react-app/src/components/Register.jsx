@@ -24,7 +24,7 @@ const Register = () => {
 
       if (response.status === 200) {
         alert("Registration successful!");
-        // Redirect or perform other actions after successful registration
+        // Redirection or other actions after successful registration if needed 
       }
     } catch (err) {
       setError("Error during registration");
