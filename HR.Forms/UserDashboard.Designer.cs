@@ -93,6 +93,7 @@
             lbl_listofuser.TabIndex = 5;
             lbl_listofuser.Text = "List of User";
             lbl_listofuser.UseVisualStyleBackColor = true;
+            lbl_listofuser.Click += lbl_listofuser_Click_1;
             // 
             // btn_logout
             // 
@@ -102,6 +103,7 @@
             btn_logout.TabIndex = 6;
             btn_logout.Text = "Logout";
             btn_logout.UseVisualStyleBackColor = true;
+            btn_logout.Click += btn_logout_Click_1;
             // 
             // pictureBox1
             // 
@@ -140,6 +142,7 @@
             Users_Edit.TabIndex = 10;
             Users_Edit.Text = "Edit";
             Users_Edit.UseVisualStyleBackColor = true;
+            Users_Edit.Click += Users_Edit_Click_1;
             // 
             // Users_Delete
             // 
@@ -149,7 +152,7 @@
             Users_Delete.TabIndex = 11;
             Users_Delete.Text = "Delete";
             Users_Delete.UseVisualStyleBackColor = true;
-           
+            Users_Delete.Click += Users_Delete_Click;
             // 
             // updateUsernameTextBox
             // 
@@ -157,6 +160,9 @@
             updateUsernameTextBox.Name = "updateUsernameTextBox";
             updateUsernameTextBox.Size = new Size(140, 23);
             updateUsernameTextBox.TabIndex = 12;
+
+         
+
             // 
             // UserDashboard
             // 
@@ -173,7 +179,7 @@
             Controls.Add(Profile_Btn);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.None;    
             StartPosition = FormStartPosition.CenterScreen;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

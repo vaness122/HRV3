@@ -77,3 +77,33 @@
 .navbar-nav li {
   display: inline;
 }
+
+
+/* Sidebar*/
+
+/* Add this to your CSS file (App.css) */
+.sidebar {
+  background-color: #eaebec;
+  color:rgb(0, 0, 0);
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin: 15px 0;
+}
+
+.sidebar a {
+  color: rgb(15, 14, 14);
+  text-decoration: none;
+}
+
+.sidebar a:hover {
+  text-decoration: underline;
+}
