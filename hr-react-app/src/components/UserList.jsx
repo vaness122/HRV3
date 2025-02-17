@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Sidebar from './Sidebar';
+
 
 const UserList = () => {
   const [users, setUsers] = useState([]);
@@ -53,14 +55,15 @@ const UserList = () => {
   };
 
   return (
-    
-   <div class="container mx-auto p-6">
+  <div>
+    <Sidebar/>
+   <div class="container mx-auto p-15">
         <div class="overflow-x-auto rounded-lg shadow">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-800 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="px-6 py-3">
+                        <th scope="col" class="px-6 py-10">
                             <button class="flex items-center">
                                 Name
                                 <svg class="w-3 h-3 ml-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
@@ -96,6 +99,7 @@ const UserList = () => {
                 <span class="text-sm text-gray-700 dark:text-gray-400">Page 1 of 10</span>
                 <button class="px-3 py-1 bg-gray-200 dark:bg-gray-700 rounded">Next</button>
             </div>
+   </div>
    </div>
    </div>
   );
