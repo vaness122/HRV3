@@ -20,6 +20,8 @@
             base.Dispose(disposing);
         }
 
+
+
         #region Windows Form Designer generated code
 
         /// <summary>
@@ -87,7 +89,8 @@
             Register_ToLoginBtn.TabIndex = 6;
             Register_ToLoginBtn.Text = "Login";
             Register_ToLoginBtn.UseVisualStyleBackColor = false;
-           
+            Register_ToLoginBtn.Click += Register_ToLoginBtn_Click;
+            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -194,6 +197,7 @@
         private TextBox Username_Register;
         private TextBox Password_Register;
         private Button Register_ToLoginBtn;
+
         private Button Register_Btn;
         private Label label4;
         private PictureBox pictureBox1;

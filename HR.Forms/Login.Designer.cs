@@ -199,6 +199,5 @@
         private Label label3;
         private Label label2;
         private Panel panel2;
-        private string _loggedInUsername;
     }
 }

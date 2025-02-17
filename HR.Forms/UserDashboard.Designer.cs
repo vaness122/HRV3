@@ -65,7 +65,6 @@
             lblclose.Size = new Size(29, 29);
             lblclose.TabIndex = 20;
             lblclose.Text = "X";
-          
             // 
             // Name
             // 
@@ -76,7 +75,6 @@
             Name.Size = new Size(61, 14);
             Name.TabIndex = 3;
             Name.Text = "Username";
-           
             // 
             // Profile_Btn
             // 
@@ -86,7 +84,6 @@
             Profile_Btn.TabIndex = 4;
             Profile_Btn.Text = "Profile";
             Profile_Btn.UseVisualStyleBackColor = true;
-            
             // 
             // lbl_listofuser
             // 
@@ -96,7 +93,7 @@
             lbl_listofuser.TabIndex = 5;
             lbl_listofuser.Text = "List of User";
             lbl_listofuser.UseVisualStyleBackColor = true;
-           
+            lbl_listofuser.Click += lbl_listofuser_Click_1;
             // 
             // btn_logout
             // 
@@ -106,7 +103,7 @@
             btn_logout.TabIndex = 6;
             btn_logout.Text = "Logout";
             btn_logout.UseVisualStyleBackColor = true;
-            
+            btn_logout.Click += btn_logout_Click_1;
             // 
             // pictureBox1
             // 
@@ -135,7 +132,7 @@
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(302, 259);
             dataGridView1.TabIndex = 9;
-         
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // Users_Edit
             // 
@@ -145,7 +142,7 @@
             Users_Edit.TabIndex = 10;
             Users_Edit.Text = "Edit";
             Users_Edit.UseVisualStyleBackColor = true;
-          
+            Users_Edit.Click += Users_Edit_Click_1;
             // 
             // Users_Delete
             // 
@@ -163,6 +160,9 @@
             updateUsernameTextBox.Name = "updateUsernameTextBox";
             updateUsernameTextBox.Size = new Size(140, 23);
             updateUsernameTextBox.TabIndex = 12;
+
+         
+
             // 
             // UserDashboard
             // 
@@ -179,10 +179,8 @@
             Controls.Add(Profile_Btn);
             Controls.Add(panel1);
             Controls.Add(panel2);
-            FormBorderStyle = FormBorderStyle.None;
-           
+            FormBorderStyle = FormBorderStyle.None;    
             StartPosition = FormStartPosition.CenterScreen;
-         
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
@@ -191,7 +189,6 @@
             ResumeLayout(false);
             PerformLayout();
         }
-
 
         #endregion
 
@@ -207,5 +204,6 @@
         private Button Users_Delete;
         private TextBox updateUsernameTextBox;
         private Label lblclose;
+      
     }
 }

@@ -1,11 +1,8 @@
 ﻿using HR.DAL.Repository;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
+using System.Net.Http;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,11 +14,11 @@ namespace HR.Forms
         private readonly IUserRepo _userRepository;
         private readonly string _loggedInUsername;
 
-
         public UserProfile(IUserRepo userRepository, string Username)
         {
             InitializeComponent();
-            
+            _userRepository = userRepository;
+            _loggedInUsername = Username;
         }
 
         private async void EditUser_Btn_Click(object sender, EventArgs e)
@@ -61,17 +58,12 @@ namespace HR.Forms
                 return;
             }
 
-            // If both updates are successful, show a success message
             MessageBox.Show("Your changes have been successfully saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            // Optionally update the logged-in username if the username was changed
-
         }
-
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            // This is a placeholder for an unimplemented button
         }
 
         private void UserProfile_Load(object sender, EventArgs e)
@@ -86,20 +78,22 @@ namespace HR.Forms
 
         private void lblLogout_Click(object sender, EventArgs e)
         {
-
             MessageBox.Show("You have logged out successfully!", "Logout", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
-            Login login = new Login();
+            Login login = new Login(_userRepository);
             login.Show();
         }
 
         private void List_UsersBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            UserDashboard dashboard = new UserDashboard();
+            UserDashboard dashboard = new UserDashboard(_userRepository , _loggedInUsername);
             dashboard.Show();
         }
 
-       
+        private void logout_btn_Click(object sender, EventArgs e)
+        {
+            // This is a placeholder for an unimplemented logout button
+        }
     }
 }

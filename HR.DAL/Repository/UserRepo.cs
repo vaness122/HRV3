@@ -1,9 +1,11 @@
 ﻿using HR.DAL.Models;
 using HR.DAL.Data;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace HR.DAL.Repository
@@ -11,28 +13,26 @@ namespace HR.DAL.Repository
     public class UserRepo : IUserRepo
     {
         private readonly AppDbContext _context;
+        private static readonly HttpClient client = new HttpClient(); // HttpClient for API requests
 
         public UserRepo(AppDbContext context)
         {
             _context = context;
         }
-        public async Task<List<User>> GetAllUserAsyncs()
-        {
-            return await _context.Users.ToListAsync();  
-        }
 
-  
-
+        // Example of calling API to add user remotely
         public async Task AddUser(string username, string password)
         {
             try
             {
+                // Check if user exists in the database before adding
                 var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
                 if (existingUser != null)
                 {
                     throw new Exception("Username already exists.");
                 }
 
+                // Create a new user and add to the database
                 var user = new User { Username = username, Password = password };
                 _context.Add(user);
                 await _context.SaveChangesAsync();
@@ -43,6 +43,8 @@ namespace HR.DAL.Repository
             }
         }
 
+
+        // Authenticate user (e.g., check credentials)
         public bool AuthenticUser(string username, string password)
         {
             try
@@ -56,6 +58,7 @@ namespace HR.DAL.Repository
             }
         }
 
+        // Delete user locally (also can make API call if needed)
         public async Task DeleteUser(string username)
         {
             try
@@ -73,13 +76,7 @@ namespace HR.DAL.Repository
             }
         }
 
-        public List<User> GetAllUser()
-        {
-            throw new NotImplementedException();
-        }
-
-       
-
+        // Update user locally (can also call API for external update if needed)
         public async Task UpdateUser(string oldUsername, string newUsername)
         {
             try
@@ -97,6 +94,7 @@ namespace HR.DAL.Repository
             }
         }
 
+        // Update password locally (can be sent to API if necessary)
         public async Task UpdateUserPassword(string username, string newPassword)
         {
             try
@@ -114,6 +112,19 @@ namespace HR.DAL.Repository
             }
         }
 
+        // Retrieve all users from the database (without API call)
+        public async Task<List<User>> GetAllUserAsyncs()
+        {
+            return await _context.Users.ToListAsync();
+        }
+
+        // Placeholder for any other future methods (get all users, etc.)
+        public List<User> GetAllUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        // Placeholder for API user retrieval (if needed in the future)
         public Task GetAllUserAsync()
         {
             throw new NotImplementedException();
