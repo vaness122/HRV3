@@ -12,12 +12,13 @@ namespace HR.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepo _userRepository;
+        private readonly ILogger<UserController> _logger;
 
-        public UserController(IUserRepo userRepository)
+        public UserController(IUserRepo userRepository, ILogger<UserController> logger)
         {
             _userRepository = userRepository;
+            _logger = logger;
         }
-
 
 
         [HttpPost("register")]
@@ -56,8 +57,9 @@ namespace HR.API.Controllers
             }
         }
 
-        [HttpPut("update")]
-        public async Task<IActionResult> Update([FromBody] User user)
+        [HttpPut("update/{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] User user)
+
         {
             try
             {
