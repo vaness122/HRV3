@@ -10,7 +10,7 @@ namespace HR.DAL.Data
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>();
 
             // Use the same connection string as you do in Program.cs or Startup.cs
-            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=HRDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True");
+            optionsBuilder.UseSqlServer("Server=DESKTOP-AOJDK8MB;Database=HRDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True");
 
             return new AppDbContext(optionsBuilder.Options);
         }

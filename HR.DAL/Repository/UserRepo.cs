@@ -58,11 +58,11 @@ namespace HR.DAL.Repository
             }
         }
 
-        public async Task DeleteUser(string username)
+        public async Task DeleteUser(int id)
         {
             try
             {
-                var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Id ==  id);
                 if (user != null)
                 {
                     _context.Users.Remove(user);
@@ -76,14 +76,15 @@ namespace HR.DAL.Repository
         }
 
 
-        public async Task UpdateUser(string oldUsername, string newUsername)
+        public async Task UpdateUser(string oldUsername, string newUsername, int id)
         {
             try
             {
-                var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == oldUsername);
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
                 if (user != null)
                 {
                     user.Username = newUsername;
+                    _context.Users.Update(user);
                     await _context.SaveChangesAsync();
                 }
             }
@@ -94,14 +95,15 @@ namespace HR.DAL.Repository
         }
 
    
-        public async Task UpdateUserPassword(string username, string newPassword)
+        public async Task UpdateUserPassword(string username, string newPassword, int id)
         {
             try
             {
-                var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
                 if (user != null)
                 {
                     user.Password = newPassword;
+                    _context.Users.Update(user);
                     await _context.SaveChangesAsync();
                 }
             }
@@ -128,5 +130,7 @@ namespace HR.DAL.Repository
         {
             throw new NotImplementedException();
         }
+
+      
     }
 }

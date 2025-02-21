@@ -58,13 +58,13 @@ namespace HR.API.Controllers
         }
 
         [HttpPut("update/{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] User user)
+        public async Task<IActionResult> Update(int id,  [FromBody] User user)
 
         {
             try
             {
-                await _userRepository.UpdateUser(user.Username, user.Username);
-                await _userRepository.UpdateUserPassword(user.Username, user.Password);
+                await _userRepository.UpdateUser(user.Username, user.Username,id);
+                await _userRepository.UpdateUserPassword(user.Username, user.Password, id);
                 return Ok("User updated successfully.");
             }
             catch (Exception ex)
@@ -73,12 +73,12 @@ namespace HR.API.Controllers
             }
         }
 
-        [HttpDelete("delete/{username}")]
-        public async Task<IActionResult> Delete(string username)
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
             try
             {
-                await _userRepository.DeleteUser(username);
+                await _userRepository.DeleteUser(id);
                 return Ok("User deleted successfully.");
             }
             catch (Exception ex)
