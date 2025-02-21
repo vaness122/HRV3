@@ -42,19 +42,8 @@ namespace HR.Forms
                 // Serialize the user object to JSON
                 var jsonContent = new StringContent(JsonConvert.SerializeObject(user), Encoding.UTF8, "application/json");
 
-<<<<<<< HEAD
-                string json = JsonConvert.SerializeObject(user);
-
-
-                var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-
-                HttpResponseMessage response = await client.PostAsync("http://localhost:7293/api/user/register", content);
-
-=======
                 // Send a POST request to the register API endpoint
                 var response = await _httpClient.PostAsync("user/register", jsonContent);
->>>>>>> 3c6bc7e89fba9c1443ac827f7736fcbfd6bdcfd4
 
                 // Check if the registration was successful
                 if (response.IsSuccessStatusCode)
