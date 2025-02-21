@@ -131,16 +131,16 @@ namespace HR.Forms
 
         private async void Users_Edit_Click_1(object sender, EventArgs e)
         {
-          
+            // Check if a row is selected in the DataGridView
             if (dataGridView1.SelectedRows.Count > 0)
             {
-               
+                // Get the current username of the selected user
                 string oldUsername = dataGridView1.SelectedRows[0].Cells["Username"].Value.ToString();
 
-               
+                // Get the new username from the TextBox (assuming there's a TextBox for editing the username)
                 string newUsername = updateUsernameTextBox.Text;
 
-               
+                // Ensure that the new username is not empty
                 if (string.IsNullOrEmpty(newUsername))
                 {
                     MessageBox.Show("Please enter a new username.");
@@ -149,22 +149,24 @@ namespace HR.Forms
 
                 try
                 {
-              
+                    // Call the repository method to update the username
                     await _userRepository.UpdateUser(oldUsername, newUsername);
 
+                    // Show a success message
                     MessageBox.Show("User updated successfully!");
 
-              
+                    // Reload the user data to reflect the changes
                     await LoadUserData();
                 }
                 catch (Exception ex)
                 {
+                    // Show an error message if something goes wrong
                     MessageBox.Show($"Error updating user: {ex.Message}");
                 }
             }
             else
             {
-      
+                // Show a message if no row is selected
                 MessageBox.Show("Please select a user to edit.");
             }
         }
@@ -174,7 +176,7 @@ namespace HR.Forms
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-          
+                // Get the username from the selected row
                 string username = dataGridView1.SelectedRows[0].Cells["Username"].Value.ToString();
 
                 try

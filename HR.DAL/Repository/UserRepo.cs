@@ -58,6 +58,7 @@ namespace HR.DAL.Repository
             }
         }
 
+        // Delete user locally (also can make API call if needed)
         public async Task DeleteUser(string username)
         {
             try
@@ -75,7 +76,7 @@ namespace HR.DAL.Repository
             }
         }
 
-
+        // Update user locally (can also call API for external update if needed)
         public async Task UpdateUser(string oldUsername, string newUsername)
         {
             try
@@ -93,7 +94,7 @@ namespace HR.DAL.Repository
             }
         }
 
-   
+        // Update password locally (can be sent to API if necessary)
         public async Task UpdateUserPassword(string username, string newPassword)
         {
             try
@@ -123,7 +124,7 @@ namespace HR.DAL.Repository
             throw new NotImplementedException();
         }
 
-    
+        // Placeholder for API user retrieval (if needed in the future)
         public Task GetAllUserAsync()
         {
             throw new NotImplementedException();
