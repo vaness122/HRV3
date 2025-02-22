@@ -9,6 +9,7 @@ namespace HR.DAL.Models
 {
     public class User
     {
+        
         public  int Id { get; }
         
         public required string Username { get; set; }

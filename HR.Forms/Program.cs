@@ -40,7 +40,7 @@ namespace HR.Forms
 
             var serviceProvider = new ServiceCollection()
                 .AddDbContext<AppDbContext>(options =>
-                    options.UseSqlServer("Server=DESKTOP-AOJDK8M;Database=HRDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True"))
+                    options.UseSqlServer("Server=localhost;Database=HRDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True"))
                 .AddScoped<IUserRepo, UserRepo>()
                 .AddSingleton<HttpClient>(new HttpClient { BaseAddress = new Uri("https://localhost:7293/") })  // Point to the HR.API URL
                 .BuildServiceProvider();

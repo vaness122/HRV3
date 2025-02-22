@@ -12,7 +12,7 @@ namespace HR.DAL.Models
     {
         [Key]
         public int Id { get; set;}
-        [NotMapped]
+        
         public string employeeId
         {
             get { return Id == 0 ? "00000" : Id.ToString().PadLeft(5 ,'0'); }
@@ -23,5 +23,6 @@ namespace HR.DAL.Models
         public int Age { get; set; }
         public char Gender { get; set; }
         public string Address { get; set; }
+        public User User { get; set; }
     }
 }
