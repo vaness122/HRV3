@@ -14,6 +14,7 @@ const Sidebar = () => {
   };
 
   return (
+
     <div className="sidebar">
       <div className="sidebar-header">
         <h3>Dashboard</h3>
@@ -21,6 +22,26 @@ const Sidebar = () => {
 
       {/* Sidebar Links below Dashboard */}
       <ul className="sidebar-links">
+
+    <div
+      className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}
+      style={{
+        width: isCollapsed ? '60px' : '250px', // Adjust width based on collapse state
+        height: '100vh',
+        backgroundColor: 'gray',
+        padding: '20px',
+        transition: 'width 0.3s ease',
+        position: 'fixed', // Ensure sidebar stays fixed on the left
+        top: 0, 
+        bottom: 0,
+      }}
+    >
+      <button onClick={toggleSidebar} className="toggle-btn" style={{ position: 'absolute', top: '20px', right: '-30px' }}>
+        {isCollapsed ? '>' : '<'}
+      </button>
+      <h3 style={{ display: isCollapsed ? 'none' : 'block' }}>Dashboard</h3>
+      <ul>
+
         <li>
           <Link to="/profile">Profile</Link>
         </li>
