@@ -1,0 +1,95 @@
+/* Sidebar Styles */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #2d3b47; /* Dark color for the sidebar */
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 0 10px 10px 0; /* Rounded corners on the right */
+  }
+  
+  /* Sidebar header styles */
+  .sidebar-header {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .sidebar-header h3 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px; /* Add some space below Dashboard */
+  }
+  
+  /* Sidebar link styles */
+  .sidebar-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sidebar-links li {
+    margin: 15px 0;
+  }
+  
+  .sidebar-links a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-size: 1.1rem;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+  }
+  
+  .sidebar-links a:hover {
+    background-color: #4e5d6c; /* Lighter shade of the sidebar color */
+    color: #ffcc00; /* Gold color for hover effect */
+  }
+  
+  /* Logout Button Styles */
+  .logout-btn {
+    background-color: #e74c3c; /* Red background */
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 485px;
+  }
+  
+  .logout-btn:hover {
+    background-color: #c0392b; /* Darker red for hover effect */
+  }
+  
+  /* Sidebar Responsiveness */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 200px; /* Narrower sidebar for smaller screens */
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .sidebar {
+      width: 150px; /* Even narrower on very small screens */
+    }
+    .sidebar-header h3 {
+      font-size: 1.2rem; /* Smaller header text on small screens */
+    }
+    .sidebar-links a {
+      font-size: 1rem; /* Adjust link text size */
+    }
+  }
+  

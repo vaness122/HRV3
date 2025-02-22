@@ -1,76 +1,122 @@
-import React, { useState } from "react";
-import axios from "axios";
+import React, { useState } from 'react';
 
-const Register = () => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
+const EmployeeProfile = () => {
+  const [profile, setProfile] = useState({
+    firstName: '',
+    lastName: '',
+    age: '',
+    address: '',
+    sex: '',
+  });
 
-  const handleSubmit = async (e) => {
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setProfile((prevProfile) => ({
+      ...prevProfile,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-
-    // Validate input fields
-    if (password!== confirmPassword) {
-      setError("Passwords do not match");
-      return;
-    }
-
-    try {
-      const response = await axios.post(
-        "https://localhost:7293/api/User/register",
-        { username, password }
-      );
-
-      if (response.status === 200) {
-        alert("Registration successful!");
-        // Redirection or other actions after successful registration if needed 
-      }
-    } catch (err) {
-      setError("Error during registration");
-      console.error("Registration error:", err);
-    }
+    alert('Profile submitted successfully');
+    // Here, you can send the profile data to a backend or perform other actions
   };
 
   return (
-    <section class="bg-gray-50 dark:bg-gray-900">
-      <div class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-          {error && <p style={{ color: "red" }}>{error}</p>}
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username:</label>
-              <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                type="text"
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password:</label>
-              <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                type="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-            <div>
-              <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Confirm Password:</label>
-              <input class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                type="password"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-                required
-              />
-            </div>
-            <button type="submit">Register</button>
-          </form>
-        </div>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100 py-8">
+      <div className="bg-white shadow-lg rounded-lg w-full sm:max-w-md p-8">
+        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">Employee Profile</h1>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label htmlFor="firstName" className="block text-sm font-medium text-gray-700">
+              First Name
+            </label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              value={profile.firstName}
+              onChange={handleChange}
+              className="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="lastName" className="block text-sm font-medium text-gray-700">
+              Last Name
+            </label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              value={profile.lastName}
+              onChange={handleChange}
+              className="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="age" className="block text-sm font-medium text-gray-700">
+              Age
+            </label>
+            <input
+              type="number"
+              id="age"
+              name="age"
+              value={profile.age}
+              onChange={handleChange}
+              className="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="address" className="block text-sm font-medium text-gray-700">
+              Address
+            </label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              value={profile.address}
+              onChange={handleChange}
+              className="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="sex" className="block text-sm font-medium text-gray-700">
+              Sex
+            </label>
+            <select
+              id="sex"
+              name="sex"
+              value={profile.sex}
+              onChange={handleChange}
+              className="mt-2 block w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            >
+              <option value="">Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 transition duration-200 ease-in-out"
+          >
+            Submit Profile
+          </button>
+        </form>
       </div>
-    </section>
+    </div>
   );
 };
 
-export default Register;
+export default EmployeeProfile;
