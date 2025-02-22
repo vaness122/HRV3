@@ -88,7 +88,7 @@ namespace HR.API.Controllers
         }
 
         [HttpGet("getAll")]
-        public async Task<IActionResult> GetAllUser()
+        public async Task<IActionResult> GetAllEmployees()
         {
             try
             {

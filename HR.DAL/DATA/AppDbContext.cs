@@ -51,8 +51,39 @@ namespace HR.DAL.Data
 
             });
 
-            // You can configure other entities similarly if needed
+            modelBuilder.Entity<Employee>(entity =>
+            {
+                entity.ToTable("Employees");
+
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Id)
+                   .IsRequired()
+                   .HasColumnName("Id");
+
+                entity.Property(e => e.FirstName)
+                   .HasMaxLength(50)
+                   .IsRequired();
+
+                entity.Property(e => e.MiddleName)
+                   .HasMaxLength(50);
+
+                entity.Property(e => e.LastName)
+                   .HasMaxLength(50)
+                   .IsRequired();
+
+                entity.Property(e => e.Age)
+                   .IsRequired();
+
+                entity.Property(e => e.Gender)
+                   .IsRequired();
+
+                entity.Property(e => e.Address)
+                   .HasMaxLength(200)
+                   .IsRequired();
+            });
         }
         public DbSet<User> Users { get; set; }
+        public DbSet <Employee> Employees { get; set; }
     }
 }
