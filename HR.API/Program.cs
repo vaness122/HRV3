@@ -15,6 +15,7 @@ namespace HR.API
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddTransient<AppDbContext>();
             builder.Services.AddTransient<IUserRepo, UserRepo>();
+            builder.Services.AddScoped<IEmployeeRepo, EmployeeRepo>();
             builder.Services.AddControllers();
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
