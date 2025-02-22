@@ -10,9 +10,9 @@ namespace HR.DAL.Repository
     public interface IEmployeeRepo
     {
         Task AddEmployee (string firstName, string middleName, string lastName,
-            int age , char gender, string address);
+            int age , string gender, string address);
         Task UpdateEmployee(int id, string firstName , string middleName, string lastName,
-            int age,char gender ,string address);
+            int age,string gender ,string address);
         Task DeleteEmployee(int id);
         Task <Employee> GetEmployeeById(int id);
         Task<List<Employee>> GetAllEmployeesAsync();
