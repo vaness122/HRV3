@@ -75,11 +75,16 @@ namespace HR.DAL.Data
                 entity.Property(e => e.Address)
                    .HasMaxLength(200)
                    .IsRequired();
+
+                entity.HasOne(e => e.User)
+                .WithMany(u => u.Employees)
+                .HasForeignKey(e => e.UserId);  
             });
 
             modelBuilder.Entity<User>()
                .HasMany(u => u.Employees)
-               .WithOne(e => e.User);
+               .WithOne(e => e.User)
+                .HasForeignKey(e => e.UserId);
         }
 
         public DbSet<User> Users { get; set; }

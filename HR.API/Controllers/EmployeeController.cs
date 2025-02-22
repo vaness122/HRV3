@@ -7,10 +7,12 @@ namespace HR.API.Controllers
     public class EmployeeController : Controller
     {
         private readonly IEmployeeRepo _employeeRepository;
+       
 
         public EmployeeController(IEmployeeRepo employeeRepository)
         {
             _employeeRepository = employeeRepository;
+            
         }
 
         [HttpPost("add")]
