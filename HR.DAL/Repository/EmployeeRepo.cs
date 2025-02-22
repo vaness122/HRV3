@@ -17,7 +17,7 @@ namespace HR.DAL.Repository
         {
               _context = context;   
         }
-        public async Task AddEmployee(string firstName, string middleName, string lastName, int age, char gender, string address)
+        public async Task AddEmployee(string firstName, string middleName, string lastName, int age, string gender, string address)
         {
             try
             {
@@ -27,9 +27,17 @@ namespace HR.DAL.Repository
             }
             catch (Exception ex)
             {
-                throw new Exception ("Error while adding employee" + ex.Message, ex);
+                if (ex.InnerException != null)
+                {
+                    throw new Exception("Error while adding employee: " + ex.InnerException.Message, ex.InnerException);
+                }
+                else
+                {
+                    throw new Exception("Error while adding employee: " + ex.Message, ex);
+                }
             }
         }
+
 
         public async Task DeleteEmployee(int id)
         {
@@ -73,7 +81,7 @@ namespace HR.DAL.Repository
             }
         }
 
-        public async Task UpdateEmployee(int id, string firstName, string middleName, string lastName, int age, char gender, string address)
+        public async Task UpdateEmployee(int id, string firstName, string middleName, string lastName, int age, string gender, string address)
         {
             try
             {

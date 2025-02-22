@@ -21,8 +21,9 @@ namespace HR.DAL.Models
         public string MiddleName  { get; set; }
         public string LastName  { get; set; }
         public int Age { get; set; }
-        public char Gender { get; set; }
+        public string Gender { get; set; }
         public string Address { get; set; }
         public User User { get; set; }
+        
     }
 }
