@@ -117,6 +117,7 @@ namespace HR.Forms
 
         private async void Users_Edit_Click_1(object sender, EventArgs e)
         {
+
             if (dataGridView1.SelectedRows.Count > 0)
             {
                 string oldUsername = dataGridView1.SelectedRows[0].Cells["Username"].Value.ToString();
@@ -127,6 +128,7 @@ namespace HR.Forms
                 var selectedUser = users.FirstOrDefault(u => u.Username == oldUsername);
                 int id = selectedUser.Id;
 
+
                 if (string.IsNullOrEmpty(newUsername))
                 {
                     MessageBox.Show("Please enter a new username.");
@@ -135,17 +137,21 @@ namespace HR.Forms
 
                 try
                 {
-                    await _userRepository.UpdateUser(oldUsername, newUsername, id);
-                    MessageBox.Show("User updated successfully!");
+
+                   
+  
                     await LoadUserData();
                 }
                 catch (Exception ex)
                 {
+                    // Show an error message if something goes wrong
                     MessageBox.Show($"Error updating user: {ex.Message}");
                 }
             }
             else
             {
+
+
                 MessageBox.Show("Please select a user to edit.");
             }
         }
@@ -156,6 +162,8 @@ namespace HR.Forms
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
+
+
                 string username = dataGridView1.SelectedRows[0].Cells["Username"].Value.ToString();
                 try
                 {
