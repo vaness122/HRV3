@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -11,20 +12,21 @@ const Sidebar = () => {
 
   return (
     <div
-      className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}
+     
       style={{
-        width: isCollapsed ? '60px' : '250px', // Adjust width based on collapse state
+        // Adjust width based on collapse state
         height: '100vh',
         backgroundColor: 'gray',
-        padding: '20px',
-        transition: 'width 0.3s ease',
+        padding: '75px',
+       
         position: 'fixed', // Ensure sidebar stays fixed on the left
         top: 0, 
         bottom: 0,
+        left :0
       }}
     >
       <button onClick={toggleSidebar} className="toggle-btn" style={{ position: 'absolute', top: '20px', right: '-30px' }}>
-        {isCollapsed ? '>' : '<'}
+        {}
       </button>
       <h3 style={{ display: isCollapsed ? 'none' : 'block' }}>Dashboard</h3>
       <ul>

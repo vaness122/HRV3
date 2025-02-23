@@ -5,6 +5,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import UserList from './components/UserList';
+
 import './App.css';
 
 const App = () => {
@@ -18,7 +19,11 @@ const App = () => {
   };
 
   return (
+  <>
+  
     <Router>
+
+
       <div>
         <h1>Human Resource</h1>
 
@@ -57,6 +62,7 @@ const App = () => {
         </Routes>
       </div>
     </Router>
+    </>
   );
 };
 
