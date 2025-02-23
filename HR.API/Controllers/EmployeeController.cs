@@ -19,11 +19,11 @@ namespace HR.API.Controllers
 
         // POST api/Employee/add
         [HttpPost("add")]
-        public async Task<IActionResult> AddEmployee([FromBody] Employee employee)
+        public async Task<IActionResult> AddEmployee([FromBody] EmployeeDto employee)
         {
             try
             {
-                await _employeeRepository.AddEmployee(employee.FirstName, employee.MiddleName, employee.LastName, employee.Age, employee.Gender, employee.Address);
+                await _employeeRepository.AddEmployee(employee.FirstName, employee.MiddleName, employee.LastName, employee.Age, employee.Gender, employee.Address ,employee.UserId);
                 return Ok("Employee has been added successfully.");
             }
             catch (Exception ex)

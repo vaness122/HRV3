@@ -77,15 +77,13 @@ namespace HR.DAL.Data
                    .IsRequired();
 
                 entity.HasOne(e => e.User)
-                .WithMany(u => u.Employees)
-                .HasForeignKey(e => e.UserId);
+             .WithMany(u => u.Employees)
+             .HasForeignKey(e => e.UserId);
 
 
             });
 
-            modelBuilder.Entity<User>()
-               .HasMany(u => u.Employees)
-               .WithOne(e => e.User);
+           
                 
         }
 
