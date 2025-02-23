@@ -34,7 +34,7 @@ namespace HR.API.Controllers
 
         // PUT api/Employee/update/5
         [HttpPut("update/{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Employee employee)
+        public async Task<IActionResult> Update(int id, [FromBody] EmployeeDto employee)
         {
             try
             {
