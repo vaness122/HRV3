@@ -1,0 +1,122 @@
+/* Container Styling */
+.container {
+    padding: 30px;
+    margin-left: 260px; /* Offset for sidebar */
+    max-width: 100%;
+    background-color: #f8fafc;
+  }
+  
+  /* Message Box Styling */
+  .fixed {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px;
+    z-index: 999;
+  }
+  
+  .bg-green-500 {
+    background-color: #48bb78;
+  }
+  
+  .bg-red-500 {
+    background-color: #f56565;
+  }
+  
+  .bg-yellow-500 {
+    background-color: #ecc94b;
+  }
+  
+  .text-white {
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+  
+  /* Table Styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 16px;
+    text-align: left;
+  }
+  
+  th {
+    background-color: #f3f4f6;
+    color: #4b5563;
+    font-weight: 700;
+  }
+  
+  td {
+    background-color: white;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  
+  tr:hover {
+    background-color: #f1f5f9;
+  }
+  
+  button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Update Button */
+  .text-blue-500 {
+    background-color: #3b82f6;
+    color: white;
+  }
+  
+  .text-blue-500:hover {
+    background-color: #2563eb;
+  }
+  
+  /* Delete Button */
+  .text-red-500 {
+    background-color: #df050583;
+    color: white;
+  }
+   
+  .text-red-500:hover {
+    background-color: #f80202;
+  }
+  
+  /* Hover Effect for Buttons */
+  button:hover {
+    opacity: 0.9;
+  }
+  
+  /* Loading Text */
+  .text-center {
+    text-align: center;
+    padding: 16px;
+    font-size: 1.2rem;
+    color: #800d0d;
+  }
+  
+  /* Responsive Design for Table */
+  @media (max-width: 768px) {
+    table {
+      width: 100%;
+      font-size: 14px;
+    }
+  
+    th, td {
+      padding: 12px;
+    }
+    
+    .container {
+      margin-left: 0; /* Remove sidebar offset for smaller screens */
+    }
+  }
+  
