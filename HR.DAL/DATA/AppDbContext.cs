@@ -8,7 +8,7 @@ namespace HR.DAL.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -76,13 +76,15 @@ namespace HR.DAL.Data
                    .HasMaxLength(200)
                    .IsRequired();
 
-                
+                entity.HasOne(e => e.User)
+             .WithMany(u => u.Employees)
+             .HasForeignKey(e => e.UserId);
+
+
             });
 
-            modelBuilder.Entity<User>()
-               .HasMany(u => u.Employees)
-               .WithOne(e => e.User)
-                .HasForeignKey(e => e.User);
+
+
         }
 
         public DbSet<User> Users { get; set; }
