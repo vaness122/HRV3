@@ -16,7 +16,10 @@ namespace HR.Forms
         [STAThread]
         static void Main()
         {
-            var connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=Bulky;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True";
+
+
+            var connectionString = "Server=localhost;Database=Bulky;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True";
+
 
             using (var connection = new SqlConnection(connectionString))
             {
@@ -30,6 +33,7 @@ namespace HR.Forms
                     Console.WriteLine("Connection failed: " + ex.Message);
                 }
             }
+
 
 
 
