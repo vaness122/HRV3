@@ -18,7 +18,11 @@ const Login = ({ onLoginSuccess }) => {
       );
 
       if (response.status === 200) {
-        alert("Login successful!");
+        // Assuming the token is in response.data.token (adjust based on your API)
+        const userToken = response.data.token;
+        
+        // Save the token in localStorage
+        localStorage.setItem('userToken', userToken);
 
         // Trigger the parent component's success callback
         onLoginSuccess();
@@ -33,38 +37,48 @@ const Login = ({ onLoginSuccess }) => {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
-      <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-        <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-          {error && <p style={{ color: "red" }}>{error}</p>}
-          <form onSubmit={handleLogin}>
+    <section className="min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 flex justify-center items-center">
+      <div className="w-full max-w-sm bg-white rounded-lg shadow-lg p-8 space-y-6">
+        <h2 className="text-3xl font-bold text-center text-gray-900">Login</h2>
+
+        {error && <p className="text-red-500 text-center">{error}</p>}
+
+        <form onSubmit={handleLogin}>
+          <div className="space-y-4">
             <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Username:
-              </label>
+              <label className="block mb-2 text-sm font-medium text-gray-700">Username:</label>
               <input
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 required
               />
             </div>
+
             <div>
-              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                Password:
-              </label>
+              <label className="block mb-2 text-sm font-medium text-gray-700">Password:</label>
               <input
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="w-full p-3 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-300"
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
             </div>
-            <button type="submit">Login</button>
-          </form>
-        </div>
+
+            <button
+              type="submit"
+              className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
+            >
+              Login
+            </button>
+          </div>
+        </form>
+
+        <p className="text-center text-sm text-gray-600">
+          Don't have an account? <a href="/register" className="text-blue-600 hover:underline">Sign up</a>
+        </p>
       </div>
     </section>
   );

@@ -1,40 +1,52 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'; 
+import { Link, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
-  const [isCollapsed, setIsCollapsed] = useState(false);
-
-  
-  const toggleSidebar = () => {
-    setIsCollapsed(!isCollapsed);
+  const navigate = useNavigate(); 
+ 
+  const handleLogout = () => {
+   
+    localStorage.removeItem('userToken'); 
+    navigate('/login');
   };
 
   return (
     <div
-      className={`sidebar ${isCollapsed ? 'collapsed' : ''}`}
+      className="sidebar"
       style={{
-        width: isCollapsed ? '60px' : '250px', // Adjust width based on collapse state
+        width: '250px', // Fixed width of the sidebar
         height: '100vh',
         backgroundColor: 'gray',
         padding: '20px',
-        transition: 'width 0.3s ease',
         position: 'fixed', // Ensure sidebar stays fixed on the left
-        top: 0, 
+        top: 0,
         bottom: 0,
       }}
     >
-      <button onClick={toggleSidebar} className="toggle-btn" style={{ position: 'absolute', top: '20px', right: '-30px' }}>
-        {isCollapsed ? '>' : '<'}
-      </button>
-      <h3 style={{ display: isCollapsed ? 'none' : 'block' }}>Dashboard</h3>
-      <ul>
+      {/* Sidebar Header */}
+      <h3>Dashboard</h3>
+
+      {/* Sidebar Links */}
+      <ul className="sidebar-links">
         <li>
           <Link to="/profile">Profile</Link>
         </li>
         <li>
           <Link to="/users">User List</Link>
         </li>
+        <li>
+          <Link to="/employeeform">EmployeeForm</Link>
+        </li>
+        <li>
+          <Link to="/employeelist">EmployeeList</Link>
+        </li>
+      
       </ul>
+
+      {/* Logout button */}
+      <button className="logout-btn" onClick={handleLogout}>
+        Logout
+      </button>
     </div>
   );
 };

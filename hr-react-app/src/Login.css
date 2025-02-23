@@ -1,0 +1,153 @@
+
+  /* Centering the Login Form */
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Login Form Container */
+  .w-full {
+    width: 100%;
+  }
+  
+  .max-w-sm {
+    max-width: 400px;
+  }
+  
+  .bg-white {
+    background-color: #ffffff;
+  }
+  
+  .rounded-lg {
+    border-radius: 8px;
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .p-8 {
+    padding: 2rem;
+  }
+  
+  .space-y-6 {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Title Styling */
+  .text-3xl {
+    font-size: 1.875rem;
+  }
+  
+  .font-bold {
+    font-weight: bold;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .text-gray-900 {
+    color: #1f2937;
+  }
+  
+  /* Error Message Styling */
+  .text-red-500 {
+    color: #f87171;
+    font-size: 0.875rem;
+    margin-top: 1rem;
+  }
+  
+  /* Form Fields Styling */
+  .space-y-4 {
+    margin-bottom: 1rem;
+  }
+  
+  .block {
+    display: block;
+  }
+  
+  .mb-2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .font-medium {
+    font-weight: 500;
+  }
+  
+  .text-gray-700 {
+    color: #4b5563;
+  }
+  
+  /* Input Fields Styling */
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  input[type="text"]:focus, input[type="password"]:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+  }
+  
+  /* Button Styling */
+  button {
+    width: 100%;
+    padding: 1rem;
+    background-color: #3b82f6;
+    color: white;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #2563eb;
+  }
+  
+  button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+  }
+  
+  /* Sign up link Styling */
+  .text-sm {
+    font-size: 0.875rem;
+  }
+  
+  .text-gray-600 {
+    color: #4b5563;
+  }
+  
+  .text-blue-600 {
+    color: #3b82f6;
+    font-weight: 600;
+  }
+  
+  .text-blue-600:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .max-w-sm {
+      max-width: 100%;
+      padding: 1.5rem;
+    }
+  
+    .w-full {
+      width: 100%;
+    }
+  }
+  

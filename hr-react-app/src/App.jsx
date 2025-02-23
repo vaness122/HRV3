@@ -5,54 +5,78 @@ import Register from './components/Register';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import UserList from './components/UserList';
+import EmployeeForm from './components/EmployeeForm';
+import EmployeeList from './components/EmployeeList';
 import './App.css';
+import './Userlist.css';
+import './Sidebar.css';
+import './Login.css';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);  // Track logged-in user
 
-  // Function to update login state
-  const handleLoginSuccess = () => {
+  const handleEmployeeUpdate = (employee) => {
+    setSelectedEmployee(employee);
+  };
+
+  // Function to update login state and store user data
+  const handleLoginSuccess = (userData) => {
     setIsLoggedIn(true);
+    setUser(userData);  // Store user data (e.g., name)
+  };
+
+  const handleSave = () => {
+    setSelectedEmployee(null);
   };
 
   return (
     <Router>
-      <div>
-        <h1>Human Resource</h1>
+      <div style={{ display: 'flex' }}>
+        {/* Sidebar */}
+        <div className="sidebar">
+          <h2>Human Resource</h2>
 
-        {/* Navigation Bar */}
-        {!isLoggedIn && (
-          <nav className="navbar">
-            <ul className="navbar-nav">
+          {/* Sidebar Links */}
+          <ul>
+            {!isLoggedIn ? (
+              <>
+                <li className="nav-item">
+                  <Link to="/register" className="nav-link">Register</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/login" className="nav-link">Login</Link>
+                </li>
+              </>
+            ) : (
               <li className="nav-item">
-                <Link to="/register" className="nav-link">
-                  Register
-                </Link>
+                <span className="nav-link">Welcome, {user?.name}</span> {/* Display logged-in user's name */}
               </li>
+            )}
+          </ul>
+        </div>
 
-              <li className="nav-item">
-                <Link to="/login" className="nav-link">
-                  Login
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        )}
+        <div className="main-content">
+          <h1>Welcome to Human Resource</h1>
 
-        {/* Define Routes */}
-        <Routes>
-          <Route
-            path="/register"
-            element={<Register />}
-          />
-          <Route
-            path="/login"
-            element={<Login onLoginSuccess={handleLoginSuccess} />}
-          />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/users" element={<UserList />} />
-        </Routes>
+          {isLoggedIn && (
+            <div>
+              <h2>Employee Management</h2>
+              <EmployeeForm employee={selectedEmployee} onSave={handleSave} />
+              <EmployeeList onEmployeeUpdate={handleEmployeeUpdate} />
+            </div>
+          )}
+
+          <Routes>
+            <Route path="/register" element={<Register />} />
+            <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/users" element={<UserList />} />
+            <Route path="/employeeform" element={<EmployeeForm />} />
+            <Route path="/employeelist" element={<EmployeeList />} />
+          </Routes>
+        </div>
       </div>
     </Router>
   );
