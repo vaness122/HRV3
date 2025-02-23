@@ -24,6 +24,7 @@ const EmployeeForm = ({ employee, onSave }) => {
         age: employee.age || "",
         gender: employee.gender || "",
         address: employee.address || "",
+        UserId : 14
       });
     }
   }, [employee]);
@@ -50,9 +51,12 @@ const EmployeeForm = ({ employee, onSave }) => {
     try {
       // If employee is provided, update the existing employee
       if (employee) {
+        formData.UserId = 14;
         await axios.put(`https://localhost:7293/api/Employee/update/${employee.id}`, formData);
       } else {
         // Otherwise, add a new employee
+        formData.UserId = 14;
+        console.log(JSON.stringify(formData));
         await axios.post("https://localhost:7293/api/Employee/add", formData);
       }
       setError(""); // Clear any previous errors
