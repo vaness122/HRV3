@@ -58,12 +58,13 @@ namespace HR.DAL.Repository
             }
         }
 
-        // Delete user locally (also can make API call if needed)
-        public async Task DeleteUser(string username)
+
+        public async Task DeleteUser(int id)
+
         {
             try
             {
-                var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Id ==  id);
                 if (user != null)
                 {
                     _context.Users.Remove(user);
@@ -76,15 +77,18 @@ namespace HR.DAL.Repository
             }
         }
 
-        // Update user locally (can also call API for external update if needed)
-        public async Task UpdateUser(string oldUsername, string newUsername)
+
+
+        public async Task UpdateUser(string oldUsername, string newUsername, int id)
+
         {
             try
             {
-                var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == oldUsername);
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
                 if (user != null)
                 {
                     user.Username = newUsername;
+                    _context.Users.Update(user);
                     await _context.SaveChangesAsync();
                 }
             }
@@ -94,15 +98,18 @@ namespace HR.DAL.Repository
             }
         }
 
-        // Update password locally (can be sent to API if necessary)
-        public async Task UpdateUserPassword(string username, string newPassword)
+
+   
+        public async Task UpdateUserPassword(string username, string newPassword, int id)
+
         {
             try
             {
-                var user = await _context.Users.FirstOrDefaultAsync(u => u.Username == username);
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
                 if (user != null)
                 {
                     user.Password = newPassword;
+                    _context.Users.Update(user);
                     await _context.SaveChangesAsync();
                 }
             }
@@ -124,10 +131,25 @@ namespace HR.DAL.Repository
             throw new NotImplementedException();
         }
 
-        // Placeholder for API user retrieval (if needed in the future)
+
+
+        public async Task<User> GetUserByIdAsync(int id)
+        {
+            try
+            {
+                return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error fetching user by ID: " + ex.Message);
+            }
+        }
+
         public Task GetAllUserAsync()
         {
             throw new NotImplementedException();
         }
+
+      
     }
 }

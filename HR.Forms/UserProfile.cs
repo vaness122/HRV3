@@ -33,12 +33,17 @@ namespace HR.Forms
                 return;
             }
 
+            // Get the id of the current user
+            var user = await _userRepository.GetAllUserAsyncs();
+            var currentUser = user.FirstOrDefault(u => u.Username == _loggedInUsername);
+            int id = currentUser.Id;
+
             // Update username if it's different
             if (_loggedInUsername != newUsername)
             {
                 try
                 {
-                    await _userRepository.UpdateUser(_loggedInUsername, newUsername);
+                    await _userRepository.UpdateUser(_loggedInUsername, newUsername, id);
                 }
                 catch (Exception)
                 {
@@ -50,7 +55,7 @@ namespace HR.Forms
             // Update password
             try
             {
-                await _userRepository.UpdateUserPassword(newUsername, newPassword);
+                await _userRepository.UpdateUserPassword(newUsername, newPassword, id);
             }
             catch (Exception)
             {

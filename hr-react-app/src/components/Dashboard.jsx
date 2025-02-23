@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from './Sidebar';
 
-const Dashboard = () => {
+const Dashboard = ({ username }) => {
   return (
     <div style={{ display: 'flex' }}>
       {/* Sidebar */}
@@ -9,8 +9,10 @@ const Dashboard = () => {
 
       {/* Main Dashboard Content */}
       <div className="dashboard" style={{ marginLeft: '260px', padding: '20px' }}>
-        <h1>Welcome to your Dashboard!</h1>
-        {/* Add additional dashboard components or content here */}
+
+        <h1>Welcome, {username} to your Dashboard!</h1>
+    
+
       </div>
     </div>
   );

@@ -39,29 +39,9 @@ namespace HR.Forms
             }
         }
 
-        private async Task Users_Delete_ClickAsync(object sender, EventArgs e)
-        {
-            if (dataGridView1.SelectedRows.Count > 0)
-            {
-                string username = dataGridView1.SelectedRows[0].Cells["Username"].Value.ToString();
-                try
-                {
-                    await _userRepository.DeleteUser(username);
-                    MessageBox.Show("User deleted successfully");
-                    LoadUserData();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error deleting user: " + ex.Message);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Please select a user to delete");
-            }
-        }
+       
 
-        private void Users_Edit_Click(object sender, EventArgs e)
+        private async void Users_Edit_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
@@ -69,9 +49,14 @@ namespace HR.Forms
                 string newUsername = updateUsernameTextBox.Text;
                 try
                 {
-                    _userRepository.UpdateUser(oldUsername, newUsername);
+                    // Get the id of the selected user
+                    var users = await _userRepository.GetAllUserAsyncs();
+                    var selectedUser = users.FirstOrDefault(u => u.Username == oldUsername);
+                    int id = selectedUser.Id;
+
+                    await _userRepository.UpdateUser(oldUsername, newUsername, id);
                     MessageBox.Show("User updated successfully");
-                    LoadUserData();
+                    await LoadUserData();
                 }
                 catch (Exception ex)
                 {
@@ -79,6 +64,7 @@ namespace HR.Forms
                 }
             }
         }
+
 
         private void Profile_Btn_Click(object sender, EventArgs e)
         {
@@ -131,16 +117,18 @@ namespace HR.Forms
 
         private async void Users_Edit_Click_1(object sender, EventArgs e)
         {
-            // Check if a row is selected in the DataGridView
+
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                // Get the current username of the selected user
                 string oldUsername = dataGridView1.SelectedRows[0].Cells["Username"].Value.ToString();
-
-                // Get the new username from the TextBox (assuming there's a TextBox for editing the username)
                 string newUsername = updateUsernameTextBox.Text;
 
-                // Ensure that the new username is not empty
+                // Get the id of the selected user
+                var users = await _userRepository.GetAllUserAsyncs();
+                var selectedUser = users.FirstOrDefault(u => u.Username == oldUsername);
+                int id = selectedUser.Id;
+
+
                 if (string.IsNullOrEmpty(newUsername))
                 {
                     MessageBox.Show("Please enter a new username.");
@@ -149,13 +137,9 @@ namespace HR.Forms
 
                 try
                 {
-                    // Call the repository method to update the username
-                    await _userRepository.UpdateUser(oldUsername, newUsername);
 
-                    // Show a success message
-                    MessageBox.Show("User updated successfully!");
-
-                    // Reload the user data to reflect the changes
+                   
+  
                     await LoadUserData();
                 }
                 catch (Exception ex)
@@ -166,26 +150,30 @@ namespace HR.Forms
             }
             else
             {
-                // Show a message if no row is selected
+
+
                 MessageBox.Show("Please select a user to edit.");
             }
         }
+
 
 
         private async void Users_Delete_Click(object sender, EventArgs e)
         {
             if (dataGridView1.SelectedRows.Count > 0)
             {
-                // Get the username from the selected row
-                string username = dataGridView1.SelectedRows[0].Cells["Username"].Value.ToString();
 
+
+                string username = dataGridView1.SelectedRows[0].Cells["Username"].Value.ToString();
                 try
                 {
-                    // Call the DeleteUser method from the repository
-                    await _userRepository.DeleteUser(username);
-                    MessageBox.Show("User deleted successfully");
+                    // Get the id of the selected user
+                    var users = await _userRepository.GetAllUserAsyncs();
+                    var selectedUser = users.FirstOrDefault(u => u.Username == username);
+                    int id = selectedUser.Id;
 
-                    // Optionally, reload the user data to reflect the changes
+                    await _userRepository.DeleteUser(id);
+                    MessageBox.Show("User deleted successfully");
                     await LoadUserData();
                 }
                 catch (Exception ex)
@@ -198,5 +186,6 @@ namespace HR.Forms
                 MessageBox.Show("Please select a user to delete.");
             }
         }
+
     }
 }

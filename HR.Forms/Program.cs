@@ -1,5 +1,6 @@
 using HR.DAL.Data;
 using HR.DAL.Repository;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -15,13 +16,31 @@ namespace HR.Forms
         [STAThread]
         static void Main()
         {
+            var connectionString = "Server=localhost;Database=Bulky;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True";
+
+            using (var connection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    Console.WriteLine("Connection successful!");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Connection failed: " + ex.Message);
+                }
+            }
+
+
+
+
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
             var serviceProvider = new ServiceCollection()
                 .AddDbContext<AppDbContext>(options =>
-                    options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=HRDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True"))
+                    options.UseSqlServer("Server=localhost;Database=HRDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True"))
                 .AddScoped<IUserRepo, UserRepo>()
                 .AddSingleton<HttpClient>(new HttpClient { BaseAddress = new Uri("https://localhost:7293/") })  // Point to the HR.API URL
                 .BuildServiceProvider();
