@@ -23,9 +23,9 @@ namespace HR.DAL.Models
         public int Age { get; set; }
         public string Gender { get; set; }
         public string Address { get; set; }
-        [ForeignKey(nameof(User))]
+     
         public int UserId { get; set; }
-        public User ?User { get; set; }
+        public User User { get; set; }
         
     }
 }

@@ -15,7 +15,7 @@ namespace HR.DAL.Models
         public required string Username { get; set; }
         public required string Password { get; set; }
 
-        public virtual ICollection <Employee> Employees { get; set; }
-      
+        public ICollection<Employee> Employees { get; set; } = new List<Employee>();
+
     }
 }
