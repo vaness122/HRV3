@@ -10,12 +10,12 @@ namespace HR.DAL.Models
     public class User
     {
         
-        public  int Id { get; }
+        public  int Id { get; set; }
         
         public required string Username { get; set; }
         public required string Password { get; set; }
 
-        public virtual ICollection <Employee> Employees { get; set; }
-      
+        public ICollection<Employee> Employees { get; set; } = new List<Employee>();
+
     }
 }

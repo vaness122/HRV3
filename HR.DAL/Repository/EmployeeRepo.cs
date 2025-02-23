@@ -17,11 +17,13 @@ namespace HR.DAL.Repository
         {
               _context = context;   
         }
-        public async Task AddEmployee(string firstName, string middleName, string lastName, int age, string gender, string address)
+
+       
+        public async Task AddEmployee(string firstName, string middleName, string lastName, int age, string gender, string address,int userId)
         {
             try
             {
-                var employee = new Employee { FirstName = firstName, MiddleName = middleName, LastName = lastName, Age = age, Gender = gender, Address = address };
+                var employee = new Employee { FirstName = firstName, MiddleName = middleName, LastName = lastName, Age = age, Gender = gender, Address = address, UserId=userId};
                 _context.Employees.Add(employee);
                 await _context.SaveChangesAsync();
             }

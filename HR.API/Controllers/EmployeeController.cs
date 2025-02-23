@@ -9,19 +9,21 @@ namespace HR.API.Controllers
     public class EmployeeController : ControllerBase
     {
         private readonly IEmployeeRepo _employeeRepository;
+       
 
         public EmployeeController(IEmployeeRepo employeeRepository)
         {
             _employeeRepository = employeeRepository;
+            
         }
 
         // POST api/Employee/add
         [HttpPost("add")]
-        public async Task<IActionResult> AddEmployee([FromBody] Employee employee)
+        public async Task<IActionResult> AddEmployee([FromBody] EmployeeDto employee)
         {
             try
             {
-                await _employeeRepository.AddEmployee(employee.FirstName, employee.MiddleName, employee.LastName, employee.Age, employee.Gender, employee.Address);
+                await _employeeRepository.AddEmployee(employee.FirstName, employee.MiddleName, employee.LastName, employee.Age, employee.Gender, employee.Address ,employee.UserId);
                 return Ok("Employee has been added successfully.");
             }
             catch (Exception ex)
@@ -32,7 +34,7 @@ namespace HR.API.Controllers
 
         // PUT api/Employee/update/5
         [HttpPut("update/{id}")]
-        public async Task<IActionResult> Update(int id, [FromBody] Employee employee)
+        public async Task<IActionResult> Update(int id, [FromBody] EmployeeDto employee)
         {
             try
             {

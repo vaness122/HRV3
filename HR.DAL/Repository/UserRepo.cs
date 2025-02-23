@@ -125,7 +125,19 @@ namespace HR.DAL.Repository
             throw new NotImplementedException();
         }
 
-    
+
+        public async Task<User> GetUserByIdAsync(int id)
+        {
+            try
+            {
+                return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error fetching user by ID: " + ex.Message);
+            }
+        }
+
         public Task GetAllUserAsync()
         {
             throw new NotImplementedException();

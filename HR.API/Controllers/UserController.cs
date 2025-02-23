@@ -87,6 +87,28 @@ namespace HR.API.Controllers
             }
         }
 
+        [HttpGet("getById/{id}")]
+        public async Task<IActionResult> GetUserById(int id)
+        {
+            try
+            {
+                var user = await _userRepository.GetUserByIdAsync(id);
+                if (user != null)
+                {
+                    return Ok(user);
+                }
+                else
+                {
+                    return NotFound("User not found with the specified ID.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error: " + ex.Message);
+            }
+        }
+
+
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAllEmployees()
         {
