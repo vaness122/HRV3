@@ -10,27 +10,28 @@ const Login = ({ onLoginSuccess }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await axios.post(
         "https://localhost:7293/api/User/authenticate",
         { username, password }
       );
-
+  
       if (response.status === 200) {
         alert("Login successful!");
-
+  
         // Trigger the parent component's success callback
-        onLoginSuccess();
-
+        onLoginSuccess(username);
+  
         // Redirect to the dashboard
-        navigate("/dashboard");
+        navigate("/dashboard", { state: { username } });
       }
     } catch (err) {
       setError("Invalid username or password");
       console.error("Login error:", err);
     }
   };
+  
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900">

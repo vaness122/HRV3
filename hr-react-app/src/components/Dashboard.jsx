@@ -1,7 +1,7 @@
 import React from 'react';
 import Sidebar from './Sidebar';
 
-const Dashboard = () => {
+const Dashboard = ({ username }) => {
   return (
     <div style={{ display: 'flex' }}>
    
@@ -9,7 +9,7 @@ const Dashboard = () => {
 
 
       <div className="dashboard" style={{ marginLeft: '260px', padding: '20px' }}>
-        <h1>Welcome to your Dashboard!</h1>
+        <h1>Welcome, {username} to your Dashboard!</h1>
     
       </div>
     </div>

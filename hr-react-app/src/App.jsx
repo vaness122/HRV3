@@ -9,10 +9,12 @@ import './App.css';
 
 const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState('');
 
   // Function to update login state
-  const handleLoginSuccess = () => {
+  const handleLoginSuccess = (username) => {
     setIsLoggedIn(true);
+    setUsername(username);
   };
 
   return (
@@ -49,7 +51,7 @@ const App = () => {
             path="/login"
             element={<Login onLoginSuccess={handleLoginSuccess} />}
           />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard username={username} />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/users" element={<UserList />} />
         </Routes>
