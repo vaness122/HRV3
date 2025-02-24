@@ -34,7 +34,7 @@ const Login = ({ onLoginSuccess }) => {
   
 
   return (
-    <section className="min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 flex justify-center items-center">
+    <section className="min-h-screen  flex justify-center items-center">
       <div className="w-full max-w-sm bg-white rounded-lg shadow-lg p-8 space-y-6">
         <h2 className="text-3xl font-bold text-center text-gray-900">Login</h2>
 
