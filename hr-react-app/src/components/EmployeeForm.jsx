@@ -60,7 +60,7 @@ const EmployeeForm = ({ employee, onSave }) => {
         await axios.post("https://localhost:7293/api/Employee/add", formData);
       }
       setError(""); // Clear any previous errors
-      onSave(); // Notify the parent to refresh or handle the updated data
+     // onSave(); // Notify the parent to refresh or handle the updated data
     } catch (err) {
       console.error("Error saving employee:", err);
       setError("Failed to save employee data. Please try again.");
