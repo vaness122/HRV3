@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Sidebar from './Sidebar';
 
+
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -14,11 +15,7 @@ const UserList = () => {
       const response = await axios.get('https://localhost:7293/api/User/getAll');
       setUsers(response.data);
     } catch (err) {
-      console.error('Error fetching users:', err);
-      setMessage('Error fetching users: ' + (err.response?.data?.message || err.message));
-      setMessageType('error');
-    } finally {
-      setLoading(false);
+      console.error("Error fetching users:", err);
     }
   };
 
@@ -34,60 +31,35 @@ const UserList = () => {
 
   // Delete a user
   const deleteUser = async (userId) => {
-    setLoading(true);
     try {
       await axios.delete(`https://localhost:7293/api/User/delete/${userId}`);
       setUsers(users.filter(user => user.id !== userId));
-      setMessage('User deleted successfully!');
-      setMessageType('success');
-      setTimeout(closeMessage, 5000); // Hide the message after 5 seconds
     } catch (err) {
-      console.error('Error deleting user:', err);
-      setMessage('Error deleting user: ' + (err.response?.data?.message || err.message));
-      setMessageType('error');
-      setTimeout(closeMessage, 5000); // Hide the message after 5 seconds
-    } finally {
-      setLoading(false);
+      console.error("Error deleting user:", err);
     }
   };
 
-  // Update user details
+  // Update a user (both username and password)
   const updateUser = async (userId) => {
-    const newUsername = prompt('Enter new username:');
-    const newPassword = prompt('Enter new password:');
+    const newUsername = prompt("Enter new username:");
+    const newPassword = prompt("Enter new password:");
 
-    if (!newUsername && !newPassword) {
-      setMessage('Please provide a new username or password.');
-      setMessageType('warning');
-      setTimeout(closeMessage, 5000); // Hide the message after 5 seconds
-      return;
-    }
+    if (newUsername || newPassword) {
+      try {
+        const updatedUser = {};
 
-    const updatedUser = {};
-    if (newUsername) updatedUser.username = newUsername;
-    if (newPassword) updatedUser.password = newPassword;
+        if (newUsername) updatedUser.username = newUsername;
+        if (newPassword) updatedUser.password = newPassword;
 
-    setLoading(true);
-    try {
-      await axios.put(
-        `https://localhost:7293/api/User/update/${userId}`,
-        updatedUser,
-        { headers: { 'Content-Type': 'application/json' } }
-      );
-
-      setUsers(users.map((user) =>
-        user.id === userId ? { ...user, ...updatedUser } : user
-      ));
-      setMessage('User updated successfully!');
-      setMessageType('success');
-      setTimeout(closeMessage, 5000); // Hide the message after 5 seconds
-    } catch (err) {
-      console.error('Error updating user:', err);
-      setMessage('Error updating user: ' + (err.response?.data?.message || err.message));
-      setMessageType('error');
-      setTimeout(closeMessage, 5000); // Hide the message after 5 seconds
-    } finally {
-      setLoading(false);
+        await axios.put(`https://localhost:7293/api/User/update/${userId}`, updatedUser);
+        
+        // Update users state with the new values
+        setUsers(users.map(user => 
+          user.id === userId ? { ...user, ...updatedUser } : user
+        ));
+      } catch (err) {
+        console.error("Error updating user:", err);
+      }
     }
   };
 

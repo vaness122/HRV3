@@ -10,34 +10,31 @@ const Login = ({ onLoginSuccess }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     try {
       const response = await axios.post(
         "https://localhost:7293/api/User/authenticate",
         { username, password }
       );
-
+  
       if (response.status === 200) {
-        // Assuming the token is in response.data.token (adjust based on your API)
-        const userToken = response.data.token;
-        
-        // Save the token in localStorage
-        localStorage.setItem('userToken', userToken);
-
+        alert("Login successful!");
+  
         // Trigger the parent component's success callback
-        onLoginSuccess();
-
+        onLoginSuccess(username);
+  
         // Redirect to the dashboard
-        navigate("/dashboard");
+        navigate("/dashboard", { state: { username } });
       }
     } catch (err) {
       setError("Invalid username or password");
       console.error("Login error:", err);
     }
   };
+  
 
   return (
-    <section className="min-h-screen bg-gradient-to-r from-blue-500 to-indigo-600 flex justify-center items-center">
+    <section className="min-h-screen  flex justify-center items-center">
       <div className="w-full max-w-sm bg-white rounded-lg shadow-lg p-8 space-y-6">
         <h2 className="text-3xl font-bold text-center text-gray-900">Login</h2>
 

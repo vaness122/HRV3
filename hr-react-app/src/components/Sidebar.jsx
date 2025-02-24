@@ -1,6 +1,7 @@
 import React from 'react'; 
 import { Link, useNavigate } from 'react-router-dom';
 
+
 const Sidebar = () => {
   const navigate = useNavigate(); 
  
@@ -12,22 +13,24 @@ const Sidebar = () => {
 
   return (
     <div
-      className="sidebar"
+     
       style={{
-        width: '250px', // Fixed width of the sidebar
+        // Adjust width based on collapse state
         height: '100vh',
         backgroundColor: 'gray',
-        padding: '20px',
+        padding: '75px',
+       
         position: 'fixed', // Ensure sidebar stays fixed on the left
         top: 0,
         bottom: 0,
+        left :0
       }}
     >
-      {/* Sidebar Header */}
-      <h3>Dashboard</h3>
-
-      {/* Sidebar Links */}
-      <ul className="sidebar-links">
+      <button onClick={toggleSidebar} className="toggle-btn" style={{ position: 'absolute', top: '20px', right: '-30px' }}>
+        {}
+      </button>
+      <h3 style={{ display: isCollapsed ? 'none' : 'block' }}>Dashboard</h3>
+      <ul>
         <li>
           <Link to="/profile">Profile</Link>
         </li>

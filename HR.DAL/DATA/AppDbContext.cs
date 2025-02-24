@@ -8,7 +8,8 @@ namespace HR.DAL.Data
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
-            
+
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -18,7 +19,7 @@ namespace HR.DAL.Data
                .AddJsonFile("appsettings.json")
                .Build();
 
-            var connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=HRDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True";
+            var connectionString = "Server=localhost;Database=HRDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True";
             optionsBuilder.UseSqlServer(connectionString);
         }
 
@@ -83,8 +84,8 @@ namespace HR.DAL.Data
 
             });
 
-           
-                
+
+
         }
 
         public DbSet<User> Users { get; set; }

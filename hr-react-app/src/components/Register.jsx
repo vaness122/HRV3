@@ -33,14 +33,14 @@ const Register = () => {
   };
 
   return (
-    <section className="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 min-h-screen flex justify-center items-center">
-      <div className="w-full sm:max-w-md bg-white rounded-lg shadow-lg p-6 md:p-8">
+    <section className="  min-h-screen flex justify-center items-center">
+      <div className="w-full max-w-sm bg-white rounded-lg shadow-lg p-8 space-y-6">
         <h2 className="text-2xl font-semibold text-center mb-6">Create Account</h2>
 
         {error && <p className="text-red-500 text-center">{error}</p>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
+          <div > 
             <label className="block text-sm font-medium text-gray-900">Username:</label>
             <input
               className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -80,6 +80,9 @@ const Register = () => {
             Register
           </button>
         </form>
+        <p className="text-center text-sm text-gray-600">
+          Already have an account? <a href="/login" className="text-blue-600 hover:underline">Sign In</a>
+        </p>
       </div>
     </section>
   );

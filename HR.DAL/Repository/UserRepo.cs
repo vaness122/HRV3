@@ -58,7 +58,9 @@ namespace HR.DAL.Repository
             }
         }
 
+
         public async Task DeleteUser(int id)
+
         {
             try
             {
@@ -76,7 +78,9 @@ namespace HR.DAL.Repository
         }
 
 
+
         public async Task UpdateUser(string oldUsername, string newUsername, int id)
+
         {
             try
             {
@@ -94,8 +98,10 @@ namespace HR.DAL.Repository
             }
         }
 
+
    
         public async Task UpdateUserPassword(string username, string newPassword, int id)
+
         {
             try
             {
@@ -125,7 +131,20 @@ namespace HR.DAL.Repository
             throw new NotImplementedException();
         }
 
-    
+
+
+        public async Task<User> GetUserByIdAsync(int id)
+        {
+            try
+            {
+                return await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error fetching user by ID: " + ex.Message);
+            }
+        }
+
         public Task GetAllUserAsync()
         {
             throw new NotImplementedException();

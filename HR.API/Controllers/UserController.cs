@@ -12,13 +12,12 @@ namespace HR.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserRepo _userRepository;
-        private readonly ILogger<UserController> _logger;
 
-        public UserController(IUserRepo userRepository, ILogger<UserController> logger)
+        public UserController(IUserRepo userRepository)
         {
             _userRepository = userRepository;
-            _logger = logger;
         }
+
 
 
         [HttpPost("register")]
@@ -57,8 +56,10 @@ namespace HR.API.Controllers
             }
         }
 
+
         [HttpPut("update/{id}")]
         public async Task<IActionResult> Update(int id,  [FromBody] User user)
+
 
         {
             try
@@ -86,6 +87,28 @@ namespace HR.API.Controllers
                 return StatusCode(500, "Error: " + ex.Message);
             }
         }
+
+        [HttpGet("getById/{id}")]
+        public async Task<IActionResult> GetUserById(int id)
+        {
+            try
+            {
+                var user = await _userRepository.GetUserByIdAsync(id);
+                if (user != null)
+                {
+                    return Ok(user);
+                }
+                else
+                {
+                    return NotFound("User not found with the specified ID.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error: " + ex.Message);
+            }
+        }
+
 
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAllEmployees()

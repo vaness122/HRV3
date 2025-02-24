@@ -14,6 +14,7 @@ namespace HR.DAL.Repository
         bool AuthenticUser(string username, string password);
 
         List<User> GetAllUser();
+        Task<User> GetUserByIdAsync(int id);
 
         Task<List<User>> GetAllUserAsyncs();
        
