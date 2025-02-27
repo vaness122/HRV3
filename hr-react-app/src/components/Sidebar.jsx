@@ -32,12 +32,8 @@ const Sidebar = () => {
 
       {/* Sidebar Links */}
       <ul className="sidebar-links">
-        <li>
-          <Link to="/profile">Profile</Link>
-        </li>
-        <li>
-          <Link to="/users">User List</Link>
-        </li>
+       
+        
         <li>
           <button className="management-btn" onClick={handleManagementClick}>
             Management

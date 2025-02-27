@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Sidebar from "./Sidebar";
+import { Link } from "react-router-dom";
+
 const EmployeeList = ({ onEmployeeUpdate }) => {
   const [employees, setEmployees] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -24,18 +26,17 @@ const EmployeeList = ({ onEmployeeUpdate }) => {
   const deleteEmployee = async (employeeId) => {
     try {
       await axios.delete(`https://localhost:7293/api/Employee/${employeeId}`);
-      setEmployees(employees.filter((employee) => employee.id !== employeeId));
+      setEmployees(employees.filter((employee) => employee.id!== employeeId));
     } catch (err) {
       console.error('Error deleting employee:', err);
     }
   };
 
   return (
-    
     <div>
-        <Sidebar/>
+      <Sidebar/>
       <h2>Employee List</h2>
-      {loading ? (
+      {loading? (
         <p>Loading...</p>
       ) : (
         <table>
@@ -62,6 +63,9 @@ const EmployeeList = ({ onEmployeeUpdate }) => {
                 <td>
                   <button onClick={() => onEmployeeUpdate(employee)}>Update</button>
                   <button onClick={() => deleteEmployee(employee.id)}>Delete</button>
+                  <Link to={`/employee/${employee.id}/profile`}>
+                    <button>Profile</button>
+                  </Link>
                 </td>
               </tr>
             ))}

@@ -42,7 +42,7 @@ const App = () => {
 
             {/* Sidebar Links */}
             <ul>
-              {!isLoggedIn ? (
+              {!isLoggedIn? (
                 <>
                  
                   <li className="nav-item">
@@ -77,6 +77,7 @@ const App = () => {
               <Route path="/users" element={<UserList />} />
               <Route path="/employeeform" element={<EmployeeForm />} />
               <Route path="/employeelist" element={<EmployeeList />} />
+              <Route path="/employee/:id/profile" element={<Profile />} />
             </Routes>
           </div>
         </div>
