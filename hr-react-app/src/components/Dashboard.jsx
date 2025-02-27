@@ -11,7 +11,7 @@ const Dashboard = () => {
     const token = localStorage.getItem("userToken");
     if (!token) {
       // If no token, redirect to login page
-      navigate("/login");
+      navigate("");
     } else {
       setIsLoggedIn(true);
     }
@@ -24,7 +24,7 @@ const Dashboard = () => {
         {isLoggedIn ? (
           <h1>Welcome to your Dashboard!</h1>
         ) : (
-          <h1>Redirecting to Login...</h1>
+          <h1></h1>
         )}
       </div>
     </div>

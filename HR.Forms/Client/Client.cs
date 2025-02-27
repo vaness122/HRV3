@@ -85,4 +85,9 @@ public class Client
     {
         _httpClient.Dispose();
     }
+
+    internal static async Task<HttpResponseMessage> PostAsync(string v, StringContent content)
+    {
+        throw new NotImplementedException();
+    }
 }

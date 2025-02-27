@@ -1,36 +1,37 @@
-import React from 'react'; 
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-
 const Sidebar = () => {
-  const navigate = useNavigate(); 
- 
+  const navigate = useNavigate();
+  const [isManagementExpanded, setIsManagementExpanded] = useState(false);
+
   const handleLogout = () => {
-   
-    localStorage.removeItem('userToken'); 
+    localStorage.removeItem('userToken');
     navigate('/login');
+  };
+
+  const handleManagementClick = () => {
+    setIsManagementExpanded(!isManagementExpanded);
   };
 
   return (
     <div
-     
+      className="sidebar"
       style={{
-        // Adjust width based on collapse state
+        width: '250px', // Fixed width of the sidebar
         height: '100vh',
         backgroundColor: 'gray',
-        padding: '75px',
-       
+        padding: '20px',
         position: 'fixed', // Ensure sidebar stays fixed on the left
         top: 0,
         bottom: 0,
-        left :0
       }}
     >
-      <button onClick={toggleSidebar} className="toggle-btn" style={{ position: 'absolute', top: '20px', right: '-30px' }}>
-        {}
-      </button>
-      <h3 style={{ display: isCollapsed ? 'none' : 'block' }}>Dashboard</h3>
-      <ul>
+      {/* Sidebar Header */}
+      <h3>Dashboard</h3>
+
+      {/* Sidebar Links */}
+      <ul className="sidebar-links">
         <li>
           <Link to="/profile">Profile</Link>
         </li>
@@ -38,12 +39,20 @@ const Sidebar = () => {
           <Link to="/users">User List</Link>
         </li>
         <li>
-          <Link to="/employeeform">EmployeeForm</Link>
+          <button className="management-btn" onClick={handleManagementClick}>
+            Management
+          </button>
+          {isManagementExpanded && (
+            <ul className="management-dropdown">
+              <li>
+                <Link to="/employeeform">Employee Form</Link>
+              </li>
+              <li>
+                <Link to="/employeelist">Employee </Link>
+              </li>
+            </ul>
+          )}
         </li>
-        <li>
-          <Link to="/employeelist">EmployeeList</Link>
-        </li>
-      
       </ul>
 
       {/* Logout button */}

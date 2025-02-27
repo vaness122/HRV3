@@ -92,3 +92,31 @@
     font-size: 1rem; /* Adjust link text size */
   }
 }
+
+.management-dropdown {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background-color: #ccc;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.management-dropdown li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.management-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.management-dropdown a {
+  text-decoration: none;
+  color: #333;
+}
+
+.management-dropdown a:hover {
+  color: #666;
+}
