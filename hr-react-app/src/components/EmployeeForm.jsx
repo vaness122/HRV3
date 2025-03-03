@@ -24,7 +24,7 @@ const EmployeeForm = ({ employee, onSave }) => {
         age: employee.age || "",
         gender: employee.gender || "",
         address: employee.address || "",
-        UserId : 1
+        UserId: employee.UserId 
       });
     }
   }, [employee]);

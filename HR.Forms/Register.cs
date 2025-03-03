@@ -48,7 +48,7 @@ namespace HR.Forms
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
 
-                HttpResponseMessage response = await client.PostAsync("http://localhost:7293/api/user/register", content);
+                HttpResponseMessage response = await Client.PostAsync("http://localhost:7293/api/user/register", content);
 
 
                 // Check if the registration was successful
