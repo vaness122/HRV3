@@ -65,21 +65,23 @@ const EmployeeList = () => {
     return (
         <div>
             <Sidebar />
-            <h2>Employee List</h2>
+            <h2 style={{padding : '1px 450px', fontWeight: 'bold' ,fontSize : '20px'}}>Employee List</h2>
+
             {loading? (
                 <p>Loading...</p>
             ) : (
                 <table>
-                    <thead>
+                    <thead >
+
                         <tr>
-                            <th>Id</th>
+                            <th style = {{padding : '1px  25px'}}>Id</th>
                             <th>First Name</th>
                             <th>Middle Name</th>
                             <th>Last Name</th>
                             <th>Age</th>
                             <th>Gender</th>
                             <th>Address</th>
-                            <th>Actions</th>
+                            <th style = {{padding : '8px 70px'}}>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
