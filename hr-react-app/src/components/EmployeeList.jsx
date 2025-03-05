@@ -28,7 +28,7 @@ const EmployeeList = () => {
     const deleteEmployee = async (employeeId) => {
         try {
             await axios.delete(`https://localhost:7293/api/Employee/${employeeId}`);
-            setEmployees(employees.filter((employee) => employee.id !== employeeId));
+            setEmployees(employees.filter((employee) => employee.id!== employeeId));
         } catch (err) {
             console.error('Error deleting employee:', err);
         }
@@ -36,7 +36,7 @@ const EmployeeList = () => {
 
     const handleEditClick = (employee) => {
         setEditingEmployeeId(employee.id); // Set the ID of the employee being edited
-        setFormData({ ...employee }); // Initialize form data with the employee's data
+        setFormData({...employee }); // Initialize form data with the employee's data
     };
 
     const handleCancelClick = () => {
@@ -45,7 +45,7 @@ const EmployeeList = () => {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value }); // Update form data on input change
+        setFormData({...formData, [name]: value }); // Update form data on input change
     };
 
     const handleUpdateEmployee = async () => {
@@ -53,7 +53,7 @@ const EmployeeList = () => {
             await axios.put(`https://localhost:7293/api/Employee/update/${editingEmployeeId}`, formData); // Update the employee in the database
             setEmployees(
                 employees.map((employee) =>
-                    employee.id === editingEmployeeId ? { ...employee, ...formData } : employee
+                    employee.id === editingEmployeeId? {...employee,...formData } : employee
                 )
             ); // Update the employee in the local state
             setEditingEmployeeId(null); // Exit editing mode
@@ -66,12 +66,13 @@ const EmployeeList = () => {
         <div>
             <Sidebar />
             <h2>Employee List</h2>
-            {loading ? (
+            {loading? (
                 <p>Loading...</p>
             ) : (
                 <table>
                     <thead>
                         <tr>
+                            <th>Id</th>
                             <th>First Name</th>
                             <th>Middle Name</th>
                             <th>Last Name</th>
@@ -84,7 +85,7 @@ const EmployeeList = () => {
                     <tbody>
                         {employees.map((employee) => (
                             <tr key={employee.id}>
-                                {editingEmployeeId === employee.id ? (
+                                {editingEmployeeId === employee.id? (
                                     <>
                                         <td><input type="text" name="firstName" value={formData.firstName || ''} onChange={handleInputChange} /></td>
                                         <td><input type="text" name="middleName" value={formData.middleName || ''} onChange={handleInputChange} /></td>
@@ -93,12 +94,13 @@ const EmployeeList = () => {
                                         <td><input type="text" name="gender" value={formData.gender || ''} onChange={handleInputChange} /></td>
                                         <td><input type="text" name="address" value={formData.address || ''} onChange={handleInputChange} /></td>
                                         <td>
-                                            <button onClick={handleUpdateEmployee}>Save</button>
-                                            <button onClick={handleCancelClick}>Cancel</button>
+                                            <button style={{ padding: '8px 12px', margin: '5px' }} onClick={handleUpdateEmployee}>Save</button>
+                                            <button style={{ padding: '8px 12px', margin: '5px' }} onClick={handleCancelClick}>Cancel</button>
                                         </td>
                                     </>
                                 ) : (
                                     <>
+                                    <td>{employee.employeeId}</td>
                                         <td>{employee.firstName}</td>
                                         <td>{employee.middleName}</td>
                                         <td>{employee.lastName}</td>
@@ -106,12 +108,13 @@ const EmployeeList = () => {
                                         <td>{employee.gender}</td>
                                         <td>{employee.address}</td>
                                         <td>
-                                            <button onClick={() => handleEditClick(employee)}>Update</button>
-                                            <button onClick={() => deleteEmployee(employee.id)}>Delete</button>
-                                            <Link to={`/employee/${employee.id}/profile`}>
-                                                <button>Profile</button>
-                                            </Link>
-                                        </td>
+    <button style={{ padding: '8px 1px', margin: '2px', fontSize: '15px', background: 'lightgreen' }} onClick={() => handleEditClick(employee)}>Update</button>
+    <button style={{ padding: '8px 1px', margin: '2px', fontSize: '15px', background: 'gray' }} onClick={() => deleteEmployee(employee.id)}>Delete</button>
+    <Link to={`/employee/${employee.id}/profile`}>
+        <button style={{ padding: '8px 1px', margin: '2px', fontSize: '15px' }}>Profile</button>
+    </Link>
+</td>
+
                                     </>
                                 )}
                             </tr>

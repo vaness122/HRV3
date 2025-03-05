@@ -18,7 +18,7 @@ namespace HR.Forms
         {
 
 
-            var connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=Bulky;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True";
+            var connectionString = "Server=DESKTOP-AOJDK8M;Database=Bulky;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True";
 
 
             using (var connection = new SqlConnection(connectionString))

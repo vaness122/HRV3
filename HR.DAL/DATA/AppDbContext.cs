@@ -19,7 +19,7 @@ namespace HR.DAL.Data
                .AddJsonFile("appsettings.json")
                .Build();
 
-            var connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=HRDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True";
+            var connectionString = "Server=DESKTOP-AOJDK8M;Database=HRDb;Trusted_Connection=True;MultipleActiveResultSets=true;Encrypt=True;TrustServerCertificate=True";
             optionsBuilder.UseSqlServer(connectionString);
         }
 

@@ -18,12 +18,12 @@ const Login = ({ onLoginSuccess }) => {
       );
   
       if (response.status === 200) {
-        alert("Login successful!");
+        // Assume that the token is being returned in the response
+        const token = response.data.token;
+        localStorage.setItem("userToken", token);
   
-        // Trigger the parent component's success callback
         onLoginSuccess(username);
   
-        // Redirect to the dashboard
         navigate("/dashboard", { state: { username } });
       }
     } catch (err) {
