@@ -72,13 +72,14 @@ const Register = () => {
               required
             />
           </div>
-
+<br></br>
           <button
             type="submit"
             className="w-full bg-indigo-600 text-white p-3 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
             Register
           </button>
+
         </form>
         <p className="text-center text-sm text-gray-600">
           Already have an account? <a href="/login" className="text-blue-600 hover:underline">Sign In</a>

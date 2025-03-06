@@ -63,10 +63,11 @@ const Login = ({ onLoginSuccess }) => {
                 required
               />
             </div>
-
+<br></br>
             <button
               type="submit"
-              className="w-full py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
+              className="w-full py-5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-300"
+
             >
               Login
             </button>

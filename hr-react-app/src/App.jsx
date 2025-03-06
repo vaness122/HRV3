@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 import Profile from './components/Profile';
 import Register from './components/Register';
 import Login from './components/Login';
@@ -45,6 +45,13 @@ const App = () => {
         onEmployeeUpdate: handleEmployeeUpdate,
     }), [handleEmployeeUpdate]);
 
+    const PrivateRoute = ({ children }) => {
+        if (!isLoggedIn) {
+            return <Navigate to="/login" state={{ from: window.location.pathname }} replace />;
+        }
+        return children;
+    }
+
     return (
       <>
       <Router>
@@ -52,7 +59,7 @@ const App = () => {
               <div className="sidebar">
                   <h2>Human Resource</h2>
                   <ul>
-                      {!isLoggedIn ? (
+                      {!isLoggedIn? (
                           <>
                               <li className="nav-item">
                                   <Link to="/login" className="nav-link">Login</Link>
@@ -67,26 +74,44 @@ const App = () => {
               </div>
 
               <div className="main-content">
-                  <h1>Welcome to Human Resource</h1>
-
-                  {isLoggedIn && (
-                      <div>
-                          <h2>Employee Management</h2>
-                          {/* Remove onEmployeeUpdate prop */}
-                          <EmployeeList />
-                      </div>
-                  )}
-
                   <Routes>
                       <Route path="/register" element={<Register />} />
                       <Route path="/login" element={<Login onLoginSuccess={handleLoginSuccess} />} />
-                      <Route path="/dashboard" element={<Dashboard />} />
-                      <Route path="/profile" element={<Profile />} />
-                      <Route path="/users" element={<UserList />} />
-                      <Route path="/employeeform" element={<EmployeeForm />} />
-                      <Route path="/employeelist" element={<EmployeeList />} />
-                      <Route path="/employee/:id/profile" element={<Profile />} />
-                      <Route path="/employee/edit/:id" element={<EmployeeForm />} />
+                      <Route path="/dashboard" element={
+                          <PrivateRoute>
+                              <Dashboard />
+                          </PrivateRoute>
+                      } />
+                      <Route path="/profile" element={
+                          <PrivateRoute>
+                              <Profile />
+                          </PrivateRoute>
+                      } />
+                      <Route path="/users" element={
+                          <PrivateRoute>
+                              <UserList />
+                          </PrivateRoute>
+                      } />
+                      <Route path="/employeeform" element={
+                          <PrivateRoute>
+                              <EmployeeForm />
+                          </PrivateRoute>
+                      } />
+                      <Route path="/employeelist" element={
+                          <PrivateRoute>
+                              <EmployeeList />
+                          </PrivateRoute>
+                      } />
+                      <Route path="/employee/:id/profile" element={
+                          <PrivateRoute>
+                              <Profile />
+                          </PrivateRoute>
+                      } />
+                      <Route path="/employee/edit/:id" element={
+                          <PrivateRoute>
+                              <EmployeeForm />
+                          </PrivateRoute>
+                      } />
                   </Routes>
               </div>
           </div>
